@@ -1,4 +1,4 @@
-# 11401_CS203A
+<img width="378" height="81" alt="image" src="https://github.com/user-attachments/assets/edb5cb01-0cc5-42ba-a64b-dca628316718" /><img width="688" height="210" alt="image" src="https://github.com/user-attachments/assets/c56f4046-81b2-4320-97c9-f3156e5c3f18" /># 11401_CS203A
 - **姓名:** 張婷媜
 - **學號:** 1112463
 ## 課程資訊
@@ -33,6 +33,55 @@
     - How
       - 學會挑選合適的資料結構和演算法，在多人使用下，用好的演算法來加速運算和管理。查詢、insert、delete、update都有不同資料結構
   - Jave為了解決machine code問題(不相容)，會用bytecode經過vm，再轉成Machine code
+    
 - 9/15
   - 尋找最佳路徑 eg: google map
     - vertex(node)、edge(link/line)
+      
+- 9/28
+  - Array 
+    - Array是連續記憶體空間(contiguous memory locations)，time complexity: o(1)
+    - size of array分為: 靜態和動態
+      - 靜態: 在編譯時陣列大小就決定了，是不能被改變的，存取快速但彈性差
+      - 動態: size會在runtime時跟系統要一個空間，使用malloc、realloc時，須注意需要自己管理記憶體，最後必須free掉，否則造成效率低或記憶體外洩
+    - Dynamic Array需要知道:
+      - malloc / realloc 可能失敗在 C 裡，malloc 或 realloc 失敗時會回傳 NULL。你的程式沒有檢查回傳值，若失敗直接使用會 segmentation fault
+      - %p表示print pointer， 需搭配void*，\n表換行
+      - stack: 是一個指標指向heap記憶體，不能隨便擴充且會保留原值
+      - heap: 用malloc/new要來的動態記憶體，可用free釋放。一般都會在heap區塊後擴充，但如果heap不夠，系統會在heap找一塊更大的空間，把舊資料copy上去，並釋放舊的空間
+    - STL(標準模板庫) v.s ADT(抽象資料層面)
+      - ATD主要是在理論層面，但不管如何實作。舉例:
+        - Stack (堆疊)
+          - 操作：push(x)、pop()、top()、isEmpty()
+          - 規則：後進先出 (LIFO)
+          - 但用陣列還是鏈結串列去實作？ADT 不管。
+        - Queue (佇列)
+          - 操作：enqueue(x)、dequeue()、front()、isEmpty()
+          - 規則：先進先出 (FIFO)
+      - STL是用現成的程式庫，以使用者方便為主要目的，可直接編譯，屬於實作層面。舉例:
+        - vector → Dynamic Array (動態陣列)
+        - list → Linked List (鏈結串列)
+        - stack → Stack (堆疊，通常包裝 deque)
+        - queue → Queue (佇列，通常包裝 deque)
+        - priority_queue → Heap (優先佇列)
+        - set / map → 平衡二元搜尋樹 (紅黑樹)
+        - unordered_set / unordered_map → Hash Table
+    -  為甚麼要sorting? 二分法時，找特定的值很方便，time complexity會減少
+      - 一般常見sort: Bubble、selection、merge、guiclc、bucket、insertion
+      - sort 以記憶體分類為:
+        - internal sort、external sort
+    - Static Array優缺點、使用時機和time complexity
+      - pros: 有random access(隨機存取)特性，每個元素都可以用o(1)時間存取 
+      - cros: 在排序過的陣列中insert需要右移、delete需要左移，這些動態調整，時間複雜度為o(n)
+      - 其中insert需要注意空間，delete需要做last()
+      - 什麼時候適合用Static Array? 查找固定位置資料，但不適合頻繁更新資料的情境(這點跟linked list相反，存取慢但insert、delete快)
+    -  Unsorted array v.s sorted array
+      - Unsorted array
+        - 全找完才會決定是否存在
+        - linear search
+        - o(n)
+      - Sorted array
+        - 不用全找，一定在某個特別位置
+        - binary search
+        - 因為sorted過，會較快速
+        - o(logn)
