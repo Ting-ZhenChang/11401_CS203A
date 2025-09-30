@@ -1,4 +1,5 @@
-<img width="378" height="81" alt="image" src="https://github.com/user-attachments/assets/edb5cb01-0cc5-42ba-a64b-dca628316718" /><img width="688" height="210" alt="image" src="https://github.com/user-attachments/assets/c56f4046-81b2-4320-97c9-f3156e5c3f18" /># 11401_CS203A
+<img width="378" height="81" alt="image" src="https://github.com/user-attachments/assets/edb5cb01-0cc5-42ba-a64b-dca628316718" /><img width="688" height="210" alt="image" src="https://github.com/user-attachments/assets/c56f4046-81b2-4320-97c9-f3156e5c3f18" />
+- **11401_CS203A**
 - **姓名:** 張婷媜
 - **學號:** 1112463
 ## 課程資訊
@@ -38,7 +39,7 @@
   - 尋找最佳路徑 eg: google map
     - vertex(node)、edge(link/line)
       
-- 9/28
+- 9/23
   - Array 
     - Array是連續記憶體空間(contiguous memory locations)，time complexity: o(1)
 
@@ -106,4 +107,18 @@
           - 不用全找，一定在某個特別位置
           - binary search
           - 因為sorted過，會較快速
-          - o(logn)
+           - o(logn)
+- 9/30
+  - linked list V.S array
+    - 特性
+      - array一開始就宣告陣列大小，而linked list是不動到data本身，利用**pointer**把data的連結位置改變，且存取初始值時須從haed起
+    - 記憶體
+      - array記憶體是連續的，linked list是資料小的時候看起來連續，越來越大時會逐漸不連續
+    - space
+      - Linked list在空間利用上比較有效，需存資料的時候再create空間，在runtime時才決定             -  Array必須先宣告預期空間，在random access較有效率  
+    - insert、delete linked list
+      -  
+
+
+
+- 10/7
