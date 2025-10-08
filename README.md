@@ -112,13 +112,33 @@
   - linked list V.S array
     - 特性
       - array一開始就宣告陣列大小，而linked list是不動到data本身，利用**pointer**把data的連結位置改變，且存取初始值時須從haed起
-    - 記憶體
-      - array記憶體是連續的，linked list是資料小的時候看起來連續，越來越大時會逐漸不連續
+    - 記憶體配置
+      - array記憶體是連續的，linked list資料越來越大時會逐漸不連續，且每個節點都是動態的
+    - 記憶體空間
+      - array 沒有額外overhead
+      - linked list 有額外overhead   
+    - time complexity 
+      - array access by index: o(1)
+      - linked list by index: o(n)(需要查找整個值)
+      - array insert/delete: o(n)
+      - linked list insert/delete: o(n)
+      - array search by value: o(n)
+      - linked list search by value: o(n)
+      - array insert at front: o(n)
+      - array insert at middle: o(n)
+      - **array insert at end: o(1)**
+      - array delete: o(n)
+      - **linked list insert at front: o(1)**
+      - linked list insert at middle: o(n)
+      - linked list insert at end: o(n)/o(1)
+      - linked list delete: o(n)/o(1) 
     - space
-      - Linked list在空間利用上比較有效，需存資料的時候再create空間，在runtime時才決定             -  Array必須先宣告預期空間，在random access較有效率  
-    - insert、delete linked list
-      -  
-
-
+      - Linked list在空間利用上比較有效，需存資料的時候再create空間，在runtime時才決定
+      -  Array必須先宣告預期空間，在random access較有效率
+    -  performance
+      - array 因為是連續memory，performance比較好
+      - linked list performance較差，需要在memory間跳來跳去
 
 - 10/7
+- linked list 型態
+  - singly(都指向下一個位置)、doubly、circular
