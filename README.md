@@ -144,9 +144,9 @@
   - step 2  min node
   - step 3  minprev(才知道下一個指向誰)(須注意相依性問題)
   - **sorted**   **unsorted**
-    - -----------------
-    - -     - i+1~n   -   
-    - -     -         -
-    - ----------------- 
+     *****************
+     *     *  i+1~n  *   
+     *     *         *
+     ***************** 
 - stable sort V.s unstable sort
   - eg: 4 5 10 2 11 2 (stable sort) 
