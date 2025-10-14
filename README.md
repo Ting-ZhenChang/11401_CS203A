@@ -135,18 +135,19 @@
       - 在實務中，因為Linked List雖然節點插入刪除方便，但在需要頻繁存取特定位置的排序演算法中並不理想;選擇 Array 版本的 Selection Sort 通常更有效率（隨機存取 O(1)）
 
 - 10/7
-- linked list 型態
-  - singly(都指向下一個位置)、doubly、circular
-  - 通常singly複雜度>doubly、circular
-- linked list node exchange
-  - 分為sorted 和 unsorted，隨著selection sort增加，sorted part越大，unsorted越小。 
-  - step 1  sorted tail
-  - step 2  min node
-  - step 3  minprev(才知道下一個指向誰)(須注意相依性問題)
-  - **sorted**   **unsorted**
-     *****************
-     *     *  i+1~n  *   
-     *     *         *
-     ***************** 
-- stable sort V.s unstable sort
-  - eg: 4 5 10 2 11 2 (stable sort) 
+  - linked list 型態
+    - singly(都指向下一個位置)、doubly、circular
+    - 通常singly複雜度>doubly、circular
+  - linked list node exchange
+    - 分為sorted 和 unsorted，隨著selection sort增加，sorted part越大，unsorted越小。 
+    - step 1  sorted tail
+    - step 2  min node
+    - step 3  minprev(才知道下一個指向誰)(須注意相依性問題)
+  - stable sort V.s unstable sort
+    - eg: 4 5 10 2 11 2 (stable sort)
+  - linked list by value 只有兩個變數(i、j)
+  - linked list by pointer，需要考慮較多，程序複雜 
+
+- 10/14
+  - stack為先進後出(FILO)
+  - queue為先進先出(FIIFO) eg:排隊
