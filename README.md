@@ -148,6 +148,14 @@
   - linked list by value 只有兩個變數(i、j)
   - linked list by pointer，需要考慮較多，程序複雜 
 
-- 10/14
-  - stack為先進後出(FILO)
-  - queue為先進先出(FIIFO) eg:排隊
+- 10/24
+  - stack
+    - 為先進後出(FILO)
+    - 用top、push、pop
+    - ADT:stack create(mss)、boolean isFull(stack,mss)、boolean isEmpty(stack)、push(stack)、pop(stack)
+    - stack可以分為用linked list和array做法。用array必須先create stackA和stackB，因為redo、undo不可能只用一個stack，用河內塔方式。
+  - queue
+    - 為先進先出(FIIFO) eg:排隊
+    - 用front、rear、add、delete
+    - ADT:Queue CreateQ(j, list)、Boolean isFullQ(queue, mqs)、Boolean isEmptyQ(queue)、Queue AddQ(queue)、Queue DeleteQ(queue)
+    - 
