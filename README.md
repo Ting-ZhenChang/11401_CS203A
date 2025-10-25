@@ -152,10 +152,94 @@
   - stack
     - 為先進後出(FILO)
     - 用top、push、pop
-    - ADT:stack create(mss)、boolean isFull(stack,mss)、boolean isEmpty(stack)、push(stack)、pop(stack)
+    - ADT:  stack create(mss)、boolean isFull(stack,mss)、boolean isEmpty(stack)、push(stack)、pop(stack)
     - stack可以分為用linked list和array做法。用array必須先create stackA和stackB，因為redo、undo不可能只用一個stack，用河內塔方式。
   - queue
     - 為先進先出(FIIFO) eg:排隊
     - 用front、rear、add、delete
-    - ADT:Queue CreateQ(j, list)、Boolean isFullQ(queue, mqs)、Boolean isEmptyQ(queue)、Queue AddQ(queue)、Queue DeleteQ(queue)
-    - 
+    - ADT:  Queue CreateQ(j, list)、Boolean isFullQ(queue, mqs)、Boolean isEmptyQ(queue)、Queue AddQ(queue)、Queue DeleteQ(queue)
+      
+  - 當stack、queue用linked list、array會發生的問題
+    - stack做linked list時，必須考慮到記憶體釋放ret(t)、指標管理問題，動態配置省空間。time complexity:o(1)
+      - void push(Node *t)
+      - {
+      -   t->link = top;
+      -   top = t;
+      - }
+      - bool pop(int &item)
+      - {
+      -   Node *t = top;
+      -   top = top->link;
+      -   item = t->data;
+      -   ret(t);
+      -   return true;
+      - }
+    - stack做array時，要顧慮到top=-1、size=n-1，可能會有溢位問題，會浪費空間。time complexity:o(1)
+      - bool push(int item)
+      - {
+      -   if( isFull() )
+      -   return false;
+      -   else
+      -   {
+      -   top = top+1;
+      -   stack[top] = item;
+      -   return true;
+      -   }  
+      - }
+      - bool pop(int &item)
+      - {
+      -   if( isEmpty() )
+      -   return false;
+      -   else
+      -   {
+      -   item = stack[top];
+      -   top = top-1;
+      -   return true;
+      -   }
+      - }
+    - queue做linked list時，因為有front、rear，有記憶體釋放ret(t)、指標管理問題。time complexity:o(1)
+      - void add(Node *t)
+      - {
+      -   if(rear==null)
+      -   front=rear=t;
+      -   else
+      -   {
+      -   rear->link = t;
+      -   rear = t;
+      -   }
+      - }
+      - bool delete(int &item)
+      - {
+      -   if(front==null)
+      -   return false;
+      -   else
+      -   {
+      -   Node *t = front;
+      -   front = front->link;
+      -   item = t->data;
+      -   ret(t);
+      -   return true;
+      -   }
+      - }
+    - queue做array時，通常用circular array，必須考慮當(rear+1)%n==front時，newrear和front撞一起的問題。time complexity:o(1)
+      - bool add(int item)
+      - {
+      -   int newrear = (rear+1)%n;
+      -   if(newrear == front)
+      -   return false;
+      -   else
+      -   {
+      -   rear = nearear;
+      -   CQ[rear] = item;
+      -   return true;
+      -   }  
+      - }
+      - bool delete(int &item)
+      - {
+      -   if(front==null)
+      -   return false;
+      -   else
+      -   front = (front+1)%n;
+      -   item  = CQ[front];
+      -   return true;
+      - }
