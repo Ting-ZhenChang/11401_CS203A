@@ -200,7 +200,7 @@
     - queue做linked list時，因為有front、rear，有記憶體釋放ret(t)、指標管理問題。
     - time complexity:o(1)
       
-      #### Initialization
+    #### 演算法
     ```c
   // Initialize the integer array with 10, 20, 30, 40, 50
   int array[5] = {10, 20, 30, 40, 50};
@@ -212,7 +212,7 @@
   ```
        
       
-    - queue做array時，通常用circular array，必須考慮當(rear+1)%n==front時，newrear和front撞一起的問題。time complexity:o(1)
+- queue做array時，通常用circular array，必須考慮當(rear+1)%n==front時，newrear和front撞一起的問題。time complexity:o(1)
       - bool add(int item)
       - {
       -   int newrear = (rear+1)%n;
