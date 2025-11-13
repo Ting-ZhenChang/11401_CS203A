@@ -198,29 +198,31 @@
       -   }
       - }
     - queue做linked list時，因為有front、rear，有記憶體釋放ret(t)、指標管理問題。time complexity:o(1)
-      - void add(Node *t)
-      - {
-      -   if(rear==null)
-      -   front=rear=t;
-      -   else
-      -   {
-      -   rear->link = t;
-      -   rear = t;
-      -   }
-      - }
-      - bool delete(int &item)
-      - {
-      -   if(front==null)
-      -   return false;
-      -   else
-      -   {
-      -   Node *t = front;
-      -   front = front->link;
-      -   item = t->data;
-      -   ret(t);
-      -   return true;
-      -   }
-      - }
+      -```cpp
+void add(Node *t)
+{
+    if (rear == NULL)
+        front = rear = t;
+    else
+    {
+        rear->link = t;
+        rear = t;
+    }
+}
+
+bool Delete(int &item)
+{
+    if (front == NULL)
+        return false;
+    else
+    {
+        Node *t = front;
+        front = front->link;
+        item = t->data;
+        delete t;
+        return true;
+    }
+}
     - queue做array時，通常用circular array，必須考慮當(rear+1)%n==front時，newrear和front撞一起的問題。time complexity:o(1)
       - bool add(int item)
       - {
