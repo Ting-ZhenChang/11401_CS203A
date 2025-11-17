@@ -23,9 +23,9 @@ Email: Sofe231436935@gmail.com
 - Rationale: [Explain your approach and its effectiveness for non-integer keys.]
 
 ## Experimental Setup
-- Table sizes tested (m): 10, 11, 37
+- Table sizes tested (m): 64, 11, 37
 - Test dataset:
-  - Integers: 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60
+  - Integers: 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 200, 204, 208, 212, 216, 220, 224, 228, 232, 236
   - Strings: "cat", "dog", "bat", "cow", "ant", "owl", "bee", "hen", "pig", "fox"
 - Compiler: GCC and G++
 - Standard: C23 and C++23
@@ -80,84 +80,16 @@ Email: Sofe231436935@gmail.com
 
 ### Result Snapshot
 - Example output for integers:
-  ```
-  === Hash Function Observation (C Version) ===
-
-  === Table Size m = 10 ===
-  Key     Index
-  -----------------
-  21      1
-  22      2
-  ...
-
-  === Table Size m = 11 ===
-  Key     Index
-  -----------------
-  21      10
-  22      0
-  ...
-
-  === Table Size m = 37 ===
-  Key     Index
-  -----------------
-  21      21
-  22      22
-  ...
-
-  === Hash Function Observation (C++ Version) ===
-
-  === Table Size m = 10 ===
-  Key     Index
-  -----------------
-  21      1
-  22      2
-  ...
-
-  === Table Size m = 11 ===
-  Key     Index
-  -----------------
-  21      10
-  22      0
-  ...
-
-  === Table Size m = 37 ===
-  Key     Index
-  -----------------
-  21      21
-  22      22
-  ...
-  ```
+  
 
 - Example output for strings:
-  ```
-  === String Hash (m = 10) ===
-  Key     Index
-  -----------------
-  cat     0
-  dog     0
-  ...
-
-  === String Hash (m = 11) ===
-  Key     Index
-  -----------------
-  cat     0
-  dog     0
-  ...
-
-  === String Hash (m = 37) ===
-  Key     Index
-  -----------------
-  cat     0
-  dog     0
-  ...
-  ```
 
 - Observations: Outputs align with the analysis, showing better distribution with prime table sizes.
 - Example output for integers:
   ```
-  Hash table (m=10): [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-  Hash table (m=11): [10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  Hash table (m=37): [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, ...]
+  Hash table (m=64): [36, 40, 44, 48, 52, 56, 60, 0, 4, 8, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44]
+  Hash table (m=11): [9, 0, 4, 8, 12, 3, 7, 3, 7, 11, 2, 6, 5, 9, 0, 4, 8, 12, 3, 7 ,11, 2]
+  Hash table (m=37): [26, 30 ,34, 1, 5, 9, 13, 17, 21, 25, 15, 19, 23, 27, 31, 25, 2, 6, 10 ,14]
   ```
 - Example output for strings:
   ```
@@ -165,7 +97,7 @@ Email: Sofe231436935@gmail.com
   Hash table (m=11): ["fox", "cat", "dog", "bat", "cow", ...]
   Hash table (m=37): ["bee", "hen", "pig", "fox", "cat", ...]
   ```
-- Observations: Outputs align with the analysis, showing better distribution with prime table sizes.
+- Observations: 從Example output for integers，可以看出在非質數不能保持平均分布，且如果m是二次方，分布較差 ; m是質數則較平均。從%10時也有明顯pattern，index太集中。
 
 ## Analysis
 - Prime vs non-prime `m`: Prime table sizes generally result in better distribution and fewer collisions.
