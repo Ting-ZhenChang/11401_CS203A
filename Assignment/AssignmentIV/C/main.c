@@ -22,11 +22,12 @@
 
 int main(void) {
     // Integer keys
-    int int_keys[] = {21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60};
+    int int_keys[] = {100, 104, 108, 112, 116, 120, 124, 128, 132, 136,
+                      200, 204, 208, 212, 216, 220, 224, 228, 232, 236};
     int num_keys = sizeof(int_keys) / sizeof(int_keys[0]);
 
     // Table sizes to test
-    int table_sizes[] = {10, 11, 37};
+    int table_sizes[] = {64, 13, 37};
     int num_sizes = sizeof(table_sizes) / sizeof(table_sizes[0]);
 
     printf("=== Hash Function Observation (C Version) ===\n\n");
