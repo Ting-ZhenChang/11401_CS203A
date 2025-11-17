@@ -159,21 +159,31 @@
     - 用front、rear、add、delete
     - ADT:  Queue CreateQ(j, list)、Boolean isFullQ(queue, mqs)、Boolean isEmptyQ(queue)、Queue AddQ(queue)、Queue DeleteQ(queue)
       
-  - 當stack、queue用linked list、array會發生的問題
-    - stack做linked list時，必須考慮到記憶體釋放ret(t)、指標管理問題，動態配置省空間。time complexity:o(1)
-      - void push(Node *t)
-      - {
-      -   t->link = top;
-      -   top = t;
-      - }
-      - bool pop(int &item)
-      - {
-      -   Node *t = top;
-      -   top = top->link;
-      -   item = t->data;
-      -   ret(t);
-      -   return true;
-      - }
+  - ## Stack & Queue：Array vs Linked List Implementation
+
+### 🧱 Stack 用 Linked List
+- 優點：動態配置、省空間、無固定大小限制  
+- 缺點：需考慮記憶體釋放 (`delete t`) 與指標管理問題  
+- 時間複雜度：O(1)
+
+  ```cpp
+void push(Node *t)
+{
+    t->link = top;
+    top = t;
+}
+
+bool pop(int &item)
+{
+    if (top == NULL)
+        return false;
+    Node *t = top;
+    top = top->link;
+    item = t->data;
+    delete t;   // 釋放記憶體
+    return true;
+}
+
     - stack做array時，要顧慮到top=-1、size=n-1，可能會有溢位問題，會浪費空間。time complexity:o(1)
       - bool push(int item)
       - {
@@ -197,22 +207,39 @@
       -   return true;
       -   }
       - }
+        
     - queue做linked list時，因為有front、rear，有記憶體釋放ret(t)、指標管理問題。
     - time complexity:o(1)
       
-    #### 演算法
-    ```c
-  // Initialize the integer array with 10, 20, 30, 40, 50
-  int array[5] = {10, 20, 30, 40, 50};
-
-  // Initialize by for loop
-  for (int i = 0; i < 5; i++) {
-      array[i] = i + 1;
+  
+  void add(Node *t)
+  {
+      if (rear == NULL)
+          front = rear = t;
+      else
+      {
+          rear->link = t;
+          rear = t;
+      }
   }
-  ```
-       
-      
-- queue做array時，通常用circular array，必須考慮當(rear+1)%n==front時，newrear和front撞一起的問題。time complexity:o(1)
+
+  bool Delete(int &item)
+  {
+      if (front == NULL)
+          return false;
+      else
+      {
+          Node *t = front;
+          front = front->link;
+          item = t->data;
+          delete t;
+          return true;
+      }
+  }
+
+
+
+queue做array時，通常用circular array，必須考慮當(rear+1)%n==front時，newrear和front撞一起的問題。time complexity:o(1)
       - bool add(int item)
       - {
       -   int newrear = (rear+1)%n;
