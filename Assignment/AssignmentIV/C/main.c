@@ -4,9 +4,7 @@
    ========================================
    
    Description:
-   This program tests and displays the output of hash functions for integer
-   and string keys using different table sizes. It utilizes the hash functions
-   defined in "hash_fn.c".
+  把key換成100,104,108...(差四)，再用2的倍數64，證明此數值idx太過於集中，分佈各差四。
 
    Development History:
     - 2025/11/17: Initial implementation
