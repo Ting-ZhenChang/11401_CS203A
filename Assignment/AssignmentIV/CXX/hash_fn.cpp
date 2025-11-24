@@ -4,19 +4,20 @@
    ========================================
 
    Description:
-    更動Non-interger的部分，用Polynomial Rolling Hash實作查看分布
+    更動interger的部分，用黃金比例A = (sqrt(5) - 1) / 2 ≈ 0.6180339887查看分布
 
    Development History:
     - 2025/11/18: Initial implementation
-    - 2025/11/21: Refactored to use hash_fn.hpp
+    - 2025/11/24: Refactored to use hash_fn.hpp
 
    Developer: Ting-ZhenChang <Sofe231436935@gmail.com>
  */
 #include "hash_fn.hpp"
 
 int myHashInt(int key, int m) {
-    
-    return key % m;  
+    double A = 0.6180339887;   
+    double frac = key * A - (int)(key * A);
+    return (int)(m * frac);
 }
 
 int myHashString(const std::string& str, int m) {
@@ -24,12 +25,10 @@ int myHashString(const std::string& str, int m) {
 
     unsigned long hash = 0;
     const unsigned long p = 31;
-    unsigned long power = 1;
 
     for (char c : str) {
-        hash = (hash + static_cast<unsigned long>(c) * power) % m;
-        power = (power * p) % m;
+        hash = hash * p + static_cast<unsigned long>(c);
     }
 
-    return static_cast<int>(hash);
+    return static_cast<int>(hash % m);
 }
