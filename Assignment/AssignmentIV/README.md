@@ -46,52 +46,53 @@ Email: Sofe231436935@gmail.com
 ## Compilation, Build, Execution, and Output
 
 ### Compilation
-- The project uses a comprehensive Makefile that builds both C and C++ versions with proper flags:
+- 本專案在 Windows 環境下使用 makefile.bat 進行編譯
+ 
   ```bash
   # Build both C and C++ versions
-  make all
+  makefile.bat all 
   
   # Build only C version
-  make c
+  makefile.bat c 
   
   # Build only C++ version
-  make cxx
+  makefile.bat cxx
   ```
 
 ### Manual Compilation (if needed)
 - Command for C:
+  
   ```bash
-  gcc -std=c23 -Wall -Wextra -Wpedantic -g -o C/hash_function C/main.c C/hash_fn.c
+  gcc -std=c11 -Wall -Wextra -Wpedantic -g -o C\hash_function.exe C\main.c C\hash_fn.c
   ```
 - Command for C++:
   ```bash
-  g++ -std=c++23 -Wall -Wextra -Wpedantic -g -o CXX/hash_function_cpp CXX/main.cpp CXX/hash_fn.cpp
+  g++ -std=c++17 -Wall -Wextra -Wpedantic -g -o CXX\hash_function_cpp.exe CXX\main.cpp CXX\hash_fn.cpp
   ```
 
 ### Clean Build Files
 - Remove all compiled files:
   ```bash
-  make clean
+  Makefile.bat clean
   ```
 
 ### Execution
 - Run the compiled binary:
   ```bash
-  ./hash_function
+  .\C\hash_function.exe
   ```
   or
   ```bash
-  ./hash_function_cpp
+  .\CXX\hash_function_cpp.exe
   ```
 
 ### Result Snapshot
 - Example output for integers:
-<img width="920" height="1544" alt="螢幕擷取畫面 2025-11-24 123735" src="https://github.com/user-attachments/assets/82a0cc57-0dcf-4da6-96aa-e41710497ebe" />
-<img width="542" height="742" alt="螢幕擷取畫面 2025-11-24 123824" src="https://github.com/user-attachments/assets/3823cd1b-c551-435b-ba5d-b9000ec6f29e" />
+<img width="848" height="896" alt="image" src="https://github.com/user-attachments/assets/bc2946a7-5554-4604-bcb2-2ae9a3e93415" />
+<img width="746" height="812" alt="image" src="https://github.com/user-attachments/assets/ee03cef6-82f9-4d36-b321-45da4ac6a23c" />
+<img width="684" height="822" alt="image" src="https://github.com/user-attachments/assets/7e52106c-619f-4f70-93c2-9a35e9c8c838" />
+<img width="796" height="1456" alt="image" src="https://github.com/user-attachments/assets/a347325e-f762-495b-b620-115b8593cc71" />
 
-
-- Example output for strings:
-<img width="710" height="1329" alt="螢幕擷取畫面 2025-11-24 123847" src="https://github.com/user-attachments/assets/27298088-9df5-4336-8416-4f01d5b48467" />
 
 
 - Example output for integers:
