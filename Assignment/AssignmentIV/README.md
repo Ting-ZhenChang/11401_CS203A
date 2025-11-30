@@ -14,7 +14,12 @@ Email: Sofe231436935@gmail.com
   h(k) = floor( m * ( (k * A) mod 1 ) )
   where A = (sqrt(5) - 1) / 2 ≈ 0.6180339887
   ```
-- Rationale: 使用Knuth的乘法法，能在 非質數table size下也保持相對均勻分布，避免 division method % m 在 m=10 這種情況造成明顯pattern。
+- Rationale:
+- 1. 使用Knuth的乘法法，能在非質數table size下也保持相對均勻分布，避免 division method % m 在 m=10 這種情況造成明顯pattern，讓 key 的每一個 bit 都能「均勻擴散」到 hash 結果中，使得鄰近的 key 產生完全不同的 index。
+  2. Knuth 在 The Art of Computer Programming 中證明，使用此 A 可以在一般情況下得到近似均勻分布的 hash 結果，故使用 Knuth 推薦的常數 A（黄金比例倒數），能避免 key 在二進位表示上出現規律時造成 clustering
+  3. 計算成本非常低，不需要額外儲存表格、不需要 prime，適合 integer key
+    - reference: Donald E. Knuth, The Art of Computer Programming, Volume 3: Sorting and Searching.Section 6.4 — “Hashing by Multiplication”.
+    - https://github.com/Code42Cate/The-Art-of-Computer-Programming/blob/master/Volume3.pdf
 
 ### Non-integer Keys
 - Formula / pseudocode:
@@ -24,7 +29,12 @@ Email: Sofe231436935@gmail.com
     hash = hash * 31 + c
   return hash % m
   ```
-- Rationale: 每次都乘上一個固定的33倍數，這樣做的好處是，前面字元的影響會被放大，後面字元也能持續影響結果，整個雜湊值就不會集中在某些範圍，而是比較平均地分散在整個表格裡。
+- Rationale:
+- 1. 每次都乘上一個固定的31倍數，這樣做的好處是，前面字元的影響會被放大，後面字元也能持續影響結果，整個雜湊值就不會集中在某些範圍，而是比較平均地分散在整個表格裡
+  2. 字元序列（字串）天然適合用 polynomial hash，因為每加入一個字元時讓前面結果乘以一個固定基底 p（常用 31、53），此assignment選擇 p = 31
+  3. Polynomial rolling hash 證明了可以降低 collision，並已廣泛使用
+    - reference: Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein,Introduction to Algorithms (CLRS), Chapter 11 — “Hash Functions”, string hashing       discussion.
+    - Polynomial rolling hash.” Wikipedia, The Free Encyclopedia.
 
 ## Experimental Setup
 - Table sizes tested (m): 10, 11, 37
@@ -37,9 +47,9 @@ Email: Sofe231436935@gmail.com
 ## Results
 | Table Size (m) |                             Index Sequence                                  |       Observation        |
 |----------------|-----------------------------------------------------------------------------|--------------------------|
-| 10             | 9, 5, 2, 8, 4, 0, 6, 3, 9, 5, 5, 1, 7, 3, 9, 6, 2, 8, 4, 0                  | Pattern repeats every 10 |
-| 11             | 10, 6, 2, 9, 4, 0, 7, 3, 10, 5, 5, 1, 8, 4, 10, 6, 2, 9, 5, 0               | More uniform             |
-| 37             | 36, 22, 7, 30, 16, 2, 25, 11, 34, 20, 19, 5, 27, 13, 36, 22, 8, 31, 17, 3   | Near-uniform             | 
+| 10             | 9, 5, 2, 8, 4, 0, 6, 3, 9, 5, 5, 1, 7, 3, 9, 6, 2, 8, 4, 0                  | 分布呈現明顯週期性         |
+| 11             | 10, 6, 2, 9, 4, 0, 7, 3, 10, 5, 5, 1, 8, 4, 10, 6, 2, 9, 5, 0               | 整體分布比 m=10 均勻       |
+| 37             | 36, 22, 7, 30, 16, 2, 25, 11, 34, 20, 19, 5, 27, 13, 36, 22, 8, 31, 17, 3   | 分布最均勻且無明顯週期性    | 
 
 
 
@@ -91,9 +101,9 @@ Email: Sofe231436935@gmail.com
 <img width="848" height="896" alt="image" src="https://github.com/user-attachments/assets/bc2946a7-5554-4604-bcb2-2ae9a3e93415" />
 <img width="746" height="812" alt="image" src="https://github.com/user-attachments/assets/ee03cef6-82f9-4d36-b321-45da4ac6a23c" />
 <img width="684" height="822" alt="image" src="https://github.com/user-attachments/assets/7e52106c-619f-4f70-93c2-9a35e9c8c838" />
+
+- Example output for strings:
 <img width="796" height="1456" alt="image" src="https://github.com/user-attachments/assets/a347325e-f762-495b-b620-115b8593cc71" />
-
-
 
 - Example output for integers:
   ```
@@ -130,6 +140,16 @@ Email: Sofe231436935@gmail.com
 - Improvements: 使用質數作為hash table較好，並搭配好的hash function，可有效減少碰撞並提升效率。
 
 ## Reflection
-1. Designing hash functions requires balancing simplicity and effectiveness to minimize collisions.
-2. Table size significantly impacts the uniformity of the hash distribution, with prime sizes performing better.
-3. The design using a prime table size and a linear transformation formula produced the most uniform index sequence.
+在這次實驗中，我使用乘法法來處理整數鍵、Polynomial Rolling Hash 來處理字串鍵，並比較它們在不同 table size 下的分布情況。從結果來看，雜湊函數本身的設計固然重要，但「m 是否為質數」其實更影響整體表現。特別是在 m=37 時，不論是整數還是字串的分布都相對平均；相反地，m=10 或 m=11 時明顯更容易發生模式性重複與碰撞。
+
+- 與原本 example 比較的反思
+  課堂 example 的整數 hash 分布幾乎呈現很明顯的規律性，例如：m=10 時呈現「1,2,3…9,0」這種周期性循環 ; 字串的 example 則全部輸出 0，代表 hash function 沒有效把字元資訊混合進去
+  相比之下，我的hash function可以看到:
+    - 1. 整數 hash 透過乘法法能打破簡單的線性模式
+      2. 字串的 Polynomial Rolling Hash 能成功讓不同字變成不同 index，不再全部落在 0
+      3. m 設為質數時，分布比課堂 example 平均得多，所以代表原本 example 過於簡單，只是示範概念，並不具備實作上的實用性。而實際設計 hash function 時，必須考慮是整數還是字串型態、字元權重、bit mixing、避免 overflow、以及參數的選擇、table size等等
+
+- 未來的改善空間
+  - 1. 如果目標是用於開放位址法，可以試著加入課程中提到過的二階 hash，能有效降低二次探測的 clustering 問題
+    2. 字串 hash 的 unsigned long 在較長字串下可能會 overflow，可以改用unsigned long long，改善大數 overflow 風險，以增加 hash 的穩定性
+    3. 測試字串與整數量偏少，可以更系統性的測試方式，例如用隨機產生大量整數測試
