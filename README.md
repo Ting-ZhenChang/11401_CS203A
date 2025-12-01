@@ -117,15 +117,21 @@
     - 記憶體空間
       - array 沒有額外overhead
       - linked list 有額外overhead   
-    - time complexity 
-      - array access by index: o(1)    linked list by index: o(n)(需要查找整個值)
-      - array insert/delete: o(n)      linked list insert/delete: o(n)
-      - array search by value: o(n)    linked list search by value: o(n)
-      - array insert at front: o(n)    linked list insert at front: o(1)    
-      - array insert at middle: o(n)   linked list insert at middle: o(n)   
-      - array insert at end: o(1)      linked list insert at end: o(n)/o(1)
-      - array delete: o(n)             linked list delete: o(n)/o(1)  
-    - space
+    
+## time complexity   
+
+| Table Size (m)               |             array        |      linked list               |
+|------------------------------|--------------------------|--------------------------------|      
+|  by index                    |            o(1)          |  o(n)(需要查找整個值)           |
+|  insert                      |            o(n)          |  o(n)                          |
+|  delete                      |            o(n)          |  o(n)                          |
+|  by value                    |            o(n)          |  o(n)                          |
+|  insert at front             |            o(n)          |  o(1)                          |
+|  insert at middle            |            o(n)          |  o(n)                          |
+|  insert at end               |            o(1)          |  o(n)/o(1)                     |
+|  delete                      |            o(n)          |  o(n)/o(1)                     |
+     
+   - space
       - Linked list在空間利用上比較有效，需存資料的時候再create空間，在runtime時才決定
       -  Array必須先宣告預期空間，在random access較有效率
     -  performance
@@ -158,15 +164,13 @@
     - 為先進先出(FIIFO) eg:排隊
     - 用front、rear、add、delete
     - ADT:  Queue CreateQ(j, list)、Boolean isFullQ(queue, mqs)、Boolean isEmptyQ(queue)、Queue AddQ(queue)、Queue DeleteQ(queue)
-      
-  - ## Stack & Queue：Array vs Linked List Implementation
 
-### 🧱 Stack 用 Linked List
+## 演算法        
+### Stack 用 Linked List
 - 優點：動態配置、省空間、無固定大小限制  
 - 缺點：需考慮記憶體釋放 (`delete t`) 與指標管理問題  
 - 時間複雜度：O(1)
-
-  ```cpp
+```text
 void push(Node *t)
 {
     t->link = top;
@@ -183,8 +187,11 @@ bool pop(int &item)
     delete t;   // 釋放記憶體
     return true;
 }
-
-    - stack做array時，要顧慮到top=-1、size=n-1，可能會有溢位問題，會浪費空間。time complexity:o(1)
+  ```
+### Stack 用 array
+- 缺點：要顧慮到top=-1、size=n-1，可能會有溢位問題
+- 時間複雜度：O(1)
+```text
       - bool push(int item)
       - {
       -   if( isFull() )
@@ -207,11 +214,13 @@ bool pop(int &item)
       -   return true;
       -   }
       - }
-        
-    - queue做linked list時，因為有front、rear，有記憶體釋放ret(t)、指標管理問題。
-    - time complexity:o(1)
-      
-  
+  ```
+
+### queue 用 linked list
+- 缺點：因為有front、rear，有記憶體釋放ret(t)、指標管理問題
+- 時間複雜度：O(1)
+
+```text
   void add(Node *t)
   {
       if (rear == NULL)
@@ -236,10 +245,13 @@ bool pop(int &item)
           return true;
       }
   }
+  ```
 
+### queue 用 array
+- 缺點：通常用circular array，必須考慮當(rear+1)%n==front時，newrear和front撞一起的問題。
+- 時間複雜度：O(1)
 
-
-queue做array時，通常用circular array，必須考慮當(rear+1)%n==front時，newrear和front撞一起的問題。time complexity:o(1)
+```text
       - bool add(int item)
       - {
       -   int newrear = (rear+1)%n;
@@ -261,3 +273,186 @@ queue做array時，通常用circular array，必須考慮當(rear+1)%n==front時
       -   item  = CQ[front];
       -   return true;
       - }
+  ```
+
+- 12/1
+## tree
+- Def:tree 是一個非線性的data structure，有別於linked list，因為是hierarchical(有order)，所以沒有cycle
+- <img width="1070" height="536" alt="image" src="https://github.com/user-attachments/assets/478c6645-36f7-4eff-ae1c-122f4d180978" />
+- tree可採用linked list、括號法、left child-sibling方式轉成B.T
+- tree的問題: 因為有太多null，太浪費space，故用B.T才能使浪費率降到(k-1)/k最小，省space
+- <img width="240" height="180" alt="image" src="https://github.com/user-attachments/assets/caaaac82-9ae0-4efe-9ea4-57d9cf139d25" />
+
+
+
+## binary tree(order tree)
+- input:  52, 18, 82, 7, 69, 36, 95, 3, 11, 23, 27, 41, 60, 64, 78, 31, 45, 56, 73, 89 
+- <img width="2582" height="656" alt="image" src="https://github.com/user-attachments/assets/52c375e9-b7a0-4cc7-9b54-f35e17c743bb" />
+- in array:
+| 0  | 1  | 2  | 3 | 4  | 5  | 6  | 7 | 8  | 9  | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 |
+|----|----|----|---|----|----|----|---|----|----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| 52 | 18 | 82 | 7 | 69 | 36 | 95 | 3 | 11 | 23 | 27  | 41  | 60  | 64  | 78  | 31  | 45  | 56  | 73  | 89  |
+
+- B.T型態
+- strict、complete(degree <=1 )、退化、prefect
+
+## B.T前中後序、Count Node、高度、Leaf Node、B.T copy、equal、swap、expression tree 演算法
+
+- B.T前序演算法
+```text
+  struct:
+  class Node
+    {
+      Node *Lchild;
+      int data;
+      Node *Rchild;      
+    }
+
+    前序algo:
+    void preorder( Node *T )
+  {
+    if( T != Null )
+    {
+      print( T->data );
+      print( T->Lchild );
+      print( T->Rchild );
+    }
+  }
+    
+```
+
+- Count Node 演算法
+```text
+int count(Node *T)
+{
+    if (T == Null) return 0;
+    else
+    {
+        int nL = count(T -> Lchild);
+        int nR = count(T -> Rchild);
+        return nL + nR + 1;
+    }
+}
+
+```
+
+- Leaf Node 演算法
+```text
+
+int countleaf(Node *T)
+{
+    if (T == Null) return 0;
+    else
+    {
+        int nL = countleaf(T -> Lchild);
+        int nR = countleaf(T -> Rchild);
+        if ((nL + nR) == ∅) return 1;
+        else return nL + nR;
+    }
+}
+
+    
+```
+
+
+
+- B.T copy 演算法
+```text
+
+Node *copy(Node *orig)
+{
+    Node *d = new Node();
+    if (orig != Null)
+    {
+        d -> data = orig -> data;
+        d -> Lchild = copy(orig -> Lchild);
+        d -> Rchild = copy(orig -> Rchild);
+    }
+    else d = null;
+    return d;
+
+}
+    
+```
+
+
+
+
+
+- equal 演算法
+```text
+bool equal(Node *s, Node *t)
+{
+    bool x = false;  // case 2 結果為 x
+    {
+        if (s == Null && t == Null) return true;  // ①
+        else if (s != Null && t != Null)  // ②
+        {
+            if (s->data == t->data)
+            {
+                if (equal(s->Lchild == t->Lchild))
+                {
+                    x = equal(s->Rchild == t->Rchild);
+                }
+            }
+            return x;  // 只要 check 的過程不成立，即 return x = false
+        }
+        else return false;  // ③
+    }
+}
+    
+```
+
+
+
+
+- swap 演算法
+```text
+void swap(Node *T)
+{
+    if (T != Null)
+    {
+        swap(T -> Lchild);
+        swap(T -> Rchild);
+
+        Node *tmp = T -> Lchild;
+        T -> Lchild = T -> Rchild;
+        T -> Rchild = tmp;
+    }
+}
+    
+```
+
+- expression tree 演算法
+```text
+
+int Eval(Node *T)
+{
+    if (T != Null)
+        Eval(T->Lchild);
+        Eval(T->Rchild);
+        switch(T->data)
+        {
+            case = 元運算子:
+                T->result = count by T->data((T->Lchild)->Result, (T->Rchild)->Result);
+            case = 元注算子:
+                T->result = count by T->data((T->Rchild)->Result);
+            case 常數 or 變數:
+                T->result = 變數 or 常數;
+        }
+    return T->result;
+}
+    
+```
+
+
+## B.S.T
+- <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/97f2022b-84a3-4af1-a653-986da741e769" />
+- in array:
+| 0  | 1  | 2  | 3 | 4  | 5  | 6  | 7 | 8  | 9  | 10 | 11 | 12 | 13 | 14   | 15   | 16  | 17   | 18   | 19   | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34  | 35  | 36  | 37  | 38  | 39  | 40  | 41  | 42  | 43 | 44  | 45  | 46  | 47  | 48  | 49  | 50  | 51  | 52  | 53  | 54  | 55  |
+|----|----|----|---|----|----|----|---|----|----|-----|-----|-----|-----|-------|-------|------|-------|-------|--------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|------|------|------|------|------|------|------|------|-----|------|------|------|------|------|------|------|------|------|------|------|------|
+| 32 | 18 | 82 | 7 | 36 | 69 | 95 | 3 | 11 | 23 | 41  | 60  | 78  | 89  | null  | null  | null | null  | null  | null   | 32  | 18  | 82  | 7   | 36  | 69  | 95  | 3   | 11  | 23  | 41  | 60  | 78  | 89  | null | null | null | null | null | null | null | null | null | 31 | null | null | null | null | null | null | null | null | null | null | null |
+
+
+
+
