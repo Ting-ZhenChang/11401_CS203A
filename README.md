@@ -118,7 +118,7 @@
       - array 沒有額外overhead
       - linked list 有額外overhead   
     
-## time complexity   
+## array、linked time complexity   
 
 | Table Size (m)               |             array        |      linked list               |
 |------------------------------|--------------------------|--------------------------------|      
@@ -281,20 +281,25 @@ bool pop(int &item)
 - <img width="1070" height="536" alt="image" src="https://github.com/user-attachments/assets/478c6645-36f7-4eff-ae1c-122f4d180978" />
 - tree可採用linked list、括號法、left child-sibling方式轉成B.T
 - tree的問題: 因為有太多null，太浪費space，故用B.T才能使浪費率降到(k-1)/k最小，省space
-- <img width="240" height="180" alt="image" src="https://github.com/user-attachments/assets/caaaac82-9ae0-4efe-9ea4-57d9cf139d25" />
-
 
 
 ## binary tree(order tree)
-- input:  52, 18, 82, 7, 69, 36, 95, 3, 11, 23, 27, 41, 60, 64, 78, 31, 45, 56, 73, 89 
-- <img width="2582" height="656" alt="image" src="https://github.com/user-attachments/assets/52c375e9-b7a0-4cc7-9b54-f35e17c743bb" />
-- in array:
-| 0  | 1  | 2  | 3 | 4  | 5  | 6  | 7 | 8  | 9  | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 |
-|----|----|----|---|----|----|----|---|----|----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| 52 | 18 | 82 | 7 | 69 | 36 | 95 | 3 | 11 | 23 | 27  | 41  | 60  | 64  | 78  | 31  | 45  | 56  | 73  | 89  |
 
-- B.T型態
-- strict、complete(degree <=1 )、退化、prefect
+               1
+           /         \
+         2            3
+       /   \        /    \
+      4     5      6      7
+    
+    input:  [1, 2, 3, 4, 5, 6, 7]
+
+    in array:
+    | Index | 0  | 1 | 2  | 3 | 4 | 5    | 6  |
+    |-------|----|---|----|---|---|------|----|
+    | Value | 1  | 2 | 3 | 4  | 5 | 6    | 7  |
+
+
+- B.T型態: strict、complete(degree <=1 )、退化、prefect
 
 ## B.T前中後序、Count Node、高度、Leaf Node、B.T copy、equal、swap、expression tree 演算法
 
@@ -447,12 +452,53 @@ int Eval(Node *T)
 
 
 ## B.S.T
-- <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/97f2022b-84a3-4af1-a653-986da741e769" />
-- in array:
-| 0  | 1  | 2  | 3 | 4  | 5  | 6  | 7 | 8  | 9  | 10 | 11 | 12 | 13 | 14   | 15   | 16  | 17   | 18   | 19   | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34  | 35  | 36  | 37  | 38  | 39  | 40  | 41  | 42  | 43 | 44  | 45  | 46  | 47  | 48  | 49  | 50  | 51  | 52  | 53  | 54  | 55  |
-|----|----|----|---|----|----|----|---|----|----|-----|-----|-----|-----|-------|-------|------|-------|-------|--------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|------|------|------|------|------|------|------|------|-----|------|------|------|------|------|------|------|------|------|------|------|------|
-| 32 | 18 | 82 | 7 | 36 | 69 | 95 | 3 | 11 | 23 | 41  | 60  | 78  | 89  | null  | null  | null | null  | null  | null   | 32  | 18  | 82  | 7   | 36  | 69  | 95  | 3   | 11  | 23  | 41  | 60  | 78  | 89  | null | null | null | null | null | null | null | null | null | 31 | null | null | null | null | null | null | null | null | null | null | null |
 
 
+        1
+         \
+          2
+           \    
+            3
+             \
+              4
+               \
+                5
+                 \
+                  6
+                   \
+                    7
+    
+    input:  [10, 5, 15, 2, 7, 12, 20]
 
+    in array:
+    ## BST (array representation)
+
+    | Index | Value |
+    |-------|--------|
+    | 1     | 1      |
+    | 2     | NULL   |
+    | 3     | 2      |
+    | 4     | NULL   |
+    | 5     | NULL   |
+    | 6     | NULL   |
+    | 7     | 3      |
+    | 8–14  | NULL   |
+    | 15    | 4      |
+    | 16–30 | NULL   |  
+    | 31    | 5      |
+    | 32–62 | NULL   |
+    | 63    | 6      |
+    | 64–126 | NULL  |  
+    | 127    | 7     |
+
+    - 可以知道b.s.t用linked list較佳，因為可以靠pointer較不會浪費空間，產生很多null
+    - 相對heap用array較佳  
+
+## B.S.T、AVL Tree、Heap time complexity 
+
+| Table Size (m)               |             beat case        |      worse case                |
+|------------------------------|------------------------------|--------------------------------|      
+|  B.S.T                       |            o(logn)           |  o(n)(斜曲樹時)                 |
+|  AVL                         |            o(logn)           |  NO(解決不平衡，故無worse case)  |
+|  haep                        |      insert = o(logn)        |  找最大值 = o(1)                |
 
