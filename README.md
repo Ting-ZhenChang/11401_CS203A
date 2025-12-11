@@ -277,6 +277,38 @@ bool pop(int &item)
   ```
 
 - 12/1
+# Tree Structures Overview
+
+
+ ```text
+  Tree
+└── B.T (Binary Tree)
+    ├── 搜尋用途 → B.S.T (Binary Search Tree)
+    │   ├── 左右大小 → 數據搜尋
+    │   └── Extended B.T
+    │       └── Heap (double-ended priority queue DS)
+    │           ├── Min-Heap / Max-Heap
+    │           ├── Deep / Shallow
+    │           └── Huffman Tree
+    │               └── Optional B.S.T (Optimal B.S.T)
+    └── 完全 B.T (Complete Binary Tree)
+
+AVL Tree (高度平衡)
+└── 外部加權 → Weight External Path Length
+    └── R.B Tree (Red-Black Tree)
+        └── B Tree
+            └── B⁺ Tree（資料儲存在下方）
+
+Min Heap / Max Heap
+Deep Heap / Shallow Heap
+Huffman Tree（可視為 Optimal B.S.T)
+
+Other Trees / Heaps
+├── Splay Tree
+├── Leftist Heap
+├── Binomial Heap
+└── Fibonacci Heap
+```
 ## tree
 - Def:tree 是一個非線性的data structure，有別於linked list，因為是hierarchical(有order)，所以沒有cycle
 - <img width="1070" height="536" alt="image" src="https://github.com/user-attachments/assets/478c6645-36f7-4eff-ae1c-122f4d180978" />
