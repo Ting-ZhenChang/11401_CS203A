@@ -12,7 +12,8 @@
   - 禮拜一 9:10-10:00
   - 禮拜二 15:10~17:00
 ## 課程描述 
-- 本課程讓我們了解什麼是資料結構，它跟演算法之間的關係，以及會如何去影響到記憶體。課程內容包含linked lists, stacks, graphs, hashing, arrays等主題，理解和掌握資料結構的基本操作，學習到問題解決的能力。
+- 本課程讓我們了解什麼是資料結構，它跟演算法之間的關係，以及會如何去影響到記憶體。課程內容包含linked lists, stacks, graphs, hashing, arrays等主題，理解和掌握資料結構的基本操作，學習到問題解決的能力，在每一章節都會加上Pseudocode，以便熟悉整個資料結構。
+  
 ## 課程筆記
 - 9/9
   - C 的資料結構 = 記憶體操作，資料結構主在於讓記憶體空間最小化。因為工程師需要自己負責記憶體配置和釋放，雖然效率高、可預測性強，但需要自行管理，若錯誤會造成記憶體洩漏或程式崩潰。
@@ -502,3 +503,223 @@ int Eval(Node *T)
 |  AVL                         |            o(logn)           |  NO(解決不平衡，故無worse case)  |
 |  haep                        |      insert = o(logn)        |  找最大值 = o(1)                |
 
+
+# GRAPH
+## Adjacency List: adjacency list：有 n 個頂點，有 n 條 linked list
+
+無向圖:
+
+<img width="876" height="558" alt="image" src="https://github.com/user-attachments/assets/8e3e280d-6e66-43a4-a627-0fbc47c64c01" />
+
+Adjacency List:
+
+1 → 2 → Null
+
+2 → 1 → 3 → 4 → Null
+
+3 → 2 → 4 → Null
+
+4 → 2 → 3 → Null
+
+有向圖:
+
+<img width="614" height="624" alt="image" src="https://github.com/user-attachments/assets/52808b66-4226-44ba-a3dc-b424cc6e9836" />
+
+Adjacency List:
+
+1 → 3 → Null
+
+2 → 1 → 3 → Null
+
+3 → Null
+
+
+## Adjacency Matrix
+
+無向圖:
+
+<img width="876" height="558" alt="image" src="https://github.com/user-attachments/assets/8e3e280d-6e66-43a4-a627-0fbc47c64c01" />
+
+Adjacency Matrix:
+
+|   | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 | 0 | 1 | 0 | 0 |
+| 2 | 1 | 0 | 1 | 1 |
+| 3 | 0 | 1 | 0 | 1 |
+| 4 | 0 | 1 | 1 | 0 |
+
+有向圖:
+
+<img width="614" height="624" alt="image" src="https://github.com/user-attachments/assets/52808b66-4226-44ba-a3dc-b424cc6e9836" />
+
+Adjacency Matrix:
+
+|   | 1 | 2 | 3 |
+|---|---|---|---|
+| 1 | 0 | 1 | 0 |
+| 2 | 1 | 0 | 1 |
+| 3 | 0 | 0 | 0 |
+
+## 時間複雜度
+
+|                        | adj matrix      | adj list        |
+|------------------------|-----------------|-----------------|
+| 空間複雜度              |  O(n²)          | O(n + e)        |
+| 檢查邊是否存在           |  o(1)          | o(e)             |
+| 求某頂點 degree         |  O(n)          | O(e) / O(n+e)     |
+| 適合情況               | 完全圖           | 連通圖            |
+
+
+
+## Adjacency Matrix vs Adjacency List
+
+|                        | adj matrix      | adj list        |
+|------------------------|-----------------|-----------------|
+| vertex 數              | ✗ O(n²)         | ✓               |
+| edge 數                | ✓               | ✗               |
+| check 邊是否存在       | ✓ O(1)          | ✗ O(e)          |
+| 求總邊數               | ✗ O(n²)         | ✓ O(n + e)      |
+
+## Best / Worst Case
+
+**Best case：如果為 Connected graph**
+
+edge = n - 1
+
+O(n + e) = O(n + n - 1) < O(n²)
+
+→ 故用 adjacency list 較好
+
+---
+
+**Worst case：如果為 complete graph**
+
+edge = n(n - 1) / 2
+
+O(n + e) = O(n + n(n - 1)/2) > O(n²)
+
+→ 故用 adjacency matrix 較好
+
+
+
+
+## Graph traversal Algorithms
+
+概念:
+- 初始將所有節點 visited 設為 false
+- 從起始點 v 開始，標記為 true
+- 遍歷所有相鄰節點 w
+- 若 w 尚未被訪問，則以 w 為起點遞迴呼叫 DFS
+- 若最後仍有節點 visited = false，代表圖不連通
+    
+```text
+visited[1...n] := false
+v 為起始節點
+
+procedure DFS(v: integer)
+var w: integer;
+begin
+  visited[v] := true;
+  for each w ∈ adj(v) do
+    if not visited[w] then
+      DFS(w);
+end
+```
+
+
+
+
+## Breadth-First Search (BFS)
+
+概念:
+- 適用於無權重且無向圖，可用來求最短路徑長度
+- 使用 Queue 進行層層擴展
+- 每次從 Queue 前端取出節點 u，將其相鄰且未訪問的節點 v：
+- 標記為灰色（已發現）
+- 設定距離 d[v] = d[u] + 1
+- 設定父節點 π[v] = u
+- 加入 Queue
+- 最後將 u 標記為黑色（已完成）
+
+```text
+BFS(s: Start Vertex)
+{
+  for each u ∈ G.V - {s} do
+  {
+    color[u] = white;
+    d[u] = ∞;
+    π[u] = null;
+  }
+  color[s] = gray;
+  d[s] = 0;
+  π[s] = null;
+  create Q;
+  Enqueue(Q, s);
+
+  while (Q ≠ null) do
+  {
+    u = Dequeue(Q);
+    for each v ∈ adj(u) do
+    {
+      if (color[v] == white) then
+      {
+        color[v] = gray;
+        d[v] = d[u] + 1;
+        π[v] = u;
+        Enqueue(Q, v);
+      }
+    }
+    color[u] = black;
+  }
+}
+```
+
+
+## DFS with Cycle Detection (Back Edge)
+
+概念:
+- 在 DFS 過程中，若遇到 Back Edge（從灰色節點指向另一灰色節點），代表存在環（Cycle）
+- 使用顏色標記節點狀態：
+- white: 未訪問
+- gray: 正在訪問中
+- black: 已完成訪問
+
+```text
+DFS(G)
+{
+  for each vertex u ∈ G.V do
+  {
+    color[u] = white;
+    π[u] = null;
+  }
+  Time = 0;
+  for each vertex u ∈ G.V do
+    if (color[u] == white)
+      DFS-Visit(u);
+}
+
+DFS-Visit(u)
+{
+  color[u] = gray;
+  Time = Time + 1;
+  d[u] = Time;
+
+  for each v ∈ adj(u) do
+  {
+    if (color[v] == white)
+    {
+      π[v] = u;
+      DFS-Visit(v);
+    }
+    else if (color[v] == gray)
+    {
+      // Back Edge detected → Cycle exists
+    }
+  }
+
+  color[u] = black;
+  Time = Time + 1;
+  f[u] = Time;
+}
+```
