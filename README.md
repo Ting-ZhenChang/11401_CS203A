@@ -485,7 +485,15 @@ int Eval(Node *T)
 
 ## B.S.T
 
+特性: 
+  - 若任意節點的左子樹不空，則左子樹上所有節點的值均小於它的根節點的值
+  - 若任意節點的右子樹不空，則右子樹上所有節點的值均大於它的根節點的值
+  - 任意節點的左、右子樹也分別為二元搜尋樹
 
+<img width="720" height="427" alt="image" src="https://github.com/user-attachments/assets/3cfdba6c-4410-4d01-8379-850156fe517c" />
+
+    worse case為skewed tree:
+    
         1
          \
           2
@@ -500,10 +508,11 @@ int Eval(Node *T)
                    \
                     7
     
-    input:  [10, 5, 15, 2, 7, 12, 20]
-
-    in array:
-    ## BST (array representation)
+    - B.S.T用linked list較佳，因為可以靠pointer較不會浪費空間，產生很多null
+    - 相對HAEP用array較佳 
+    
+    假設input:  [10, 5, 15, 2, 7, 12, 20]    
+    BST (array representation):
 
     | Index | Value |
     |-------|--------|
@@ -522,9 +531,7 @@ int Eval(Node *T)
     | 63    | 6      |
     | 64–126 | NULL  |  
     | 127    | 7     |
-
-    - 可以知道b.s.t用linked list較佳，因為可以靠pointer較不會浪費空間，產生很多null
-    - 相對heap用array較佳  
+ 
 
 ## B.S.T、AVL Tree、Heap time complexity 
 
@@ -536,7 +543,9 @@ int Eval(Node *T)
 
 
 # GRAPH
-## Adjacency List: adjacency list：有 n 個頂點，有 n 條 linked list
+## Adjacency List
+
+特性: 有 n 個頂點，有 n 條 linked list
 
 無向圖:
 
