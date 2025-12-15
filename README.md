@@ -1,4 +1,4 @@
-<img width="2048" height="1152" alt="image" src="https://github.com/user-attachments/assets/d60dc934-5297-4404-82a8-01822eff2fb2" />- **11401_CS203A**
+- **11401_CS203A**
 - **姓名:** 張婷媜
 - **學號:** 1112463
 ## 課程資訊
@@ -614,23 +614,21 @@ Adjacency Matrix:
 
 ## Adjacency Matrix vs Adjacency List
 
-|                        | adj matrix      | adj list        |
-|------------------------|-----------------|-----------------|
-| vertex 數              | ✗ O(n²)         | ✓               |
-| edge 數                | ✓               | ✗               |
-| check Edge           | ✓ O(1)         | ✗ O(e)          |
-| 求總邊數               | ✗ O(n²)         | ✓ O(n + e)      |
-| 鄰居查找               | o(n)            |  o(e)            |
-| Traversal BFS/DFS     | ✗ O(n^2)       | ✓ O(n + e)         |
-| space                 | 較浪費           | 較節省             |
-| 資料                  | 適合資料量占比高  | 適合資料量占比低    |
-| 插入刪除              |                 |  O(1)              |
-| LOOK UP              | O(1) (隨機存取)  |                   |
-| dense/sparse graph   | dense          |  sparse o( v + e ) |
-| 算vertex/edge       | 算vertex數量      |  算edge數量      |
-| dense/sparse graph   | dense(比較點和點的關係)      |  sparse      |
-| 應用                  |    Small board game           |    Social network、Google Maps、dijkstra(最短路徑)、kruskal(頻繁插入刪除) |
-| dense/sparse graph   | dense(比較點和點的關係)      |  sparse      |
+| 項目 | Adjacency Matrix | Adjacency List |
+|----|----|----|
+| Vertex 數影響 | ❌ 空間與 V² 成正比 | ✅ 與 V 成正比 |
+| Edge 數影響 | ❌ 不影響空間 | ✅ 與 E 成正比 |
+| Check edge (u, v) | ✅ **O(1)** | ❌ **O(deg(u))** |
+| 計算總邊數 | ❌ **O(V²)** | ✅ **O(V + E)** |
+| 鄰居查找 | ❌ **O(V)** | ✅ **O(deg(v))** |
+| BFS / DFS | ❌ **O(V²)** | ✅ **O(V + E)** |
+| Space | ❌ 較浪費 | ✅ 較節省 |
+| 插入 / 刪除邊 | ❌ O(1) 但浪費空間 | ✅ **O(1)** |
+| Random access | ✅ O(1) | ❌ 不支援 |
+| Dense / Sparse | **Dense graph** | **Sparse graph** |
+| 重點計算單位 | 以 **Vertex** 為主 | 以 **Edge** 為主 |
+| 典型應用 | Small board game | Social network、Google Maps、Dijkstra、Kruskal |
+
 
 <img width="2048" height="1152" alt="image" src="https://github.com/user-attachments/assets/3e5d859a-4f3f-445d-9d90-5b77f27fe3f4" />
 
