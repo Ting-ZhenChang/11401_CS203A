@@ -1,4 +1,4 @@
-- **11401_CS203A**
+<img width="2048" height="1152" alt="image" src="https://github.com/user-attachments/assets/d60dc934-5297-4404-82a8-01822eff2fb2" />- **11401_CS203A**
 - **姓名:** 張婷媜
 - **學號:** 1112463
 ## 課程資訊
@@ -618,8 +618,41 @@ Adjacency Matrix:
 |------------------------|-----------------|-----------------|
 | vertex 數              | ✗ O(n²)         | ✓               |
 | edge 數                | ✓               | ✗               |
-| check 邊是否存在       | ✓ O(1)          | ✗ O(e)          |
+| check Edge           | ✓ O(1)         | ✗ O(e)          |
 | 求總邊數               | ✗ O(n²)         | ✓ O(n + e)      |
+| 鄰居查找               | o(n)            |  o(e)            |
+| Traversal BFS/DFS     | ✗ O(n^2)       | ✓ O(n + e)         |
+| space                 | 較浪費           | 較節省             |
+| 資料                  | 適合資料量占比高  | 適合資料量占比低    |
+| 插入刪除              |                 |  O(1)              |
+| LOOK UP              | O(1) (隨機存取)  |                   |
+| dense/sparse graph   | dense          |  sparse o( v + e ) |
+| 算vertex/edge       | 算vertex數量      |  算edge數量      |
+| dense/sparse graph   | dense(比較點和點的關係)      |  sparse      |
+| 應用                  |    Small board game           |    Social network、Google Maps、dijkstra(最短路徑)、kruskal(頻繁插入刪除) |
+| dense/sparse graph   | dense(比較點和點的關係)      |  sparse      |
+
+<img width="2048" height="1152" alt="image" src="https://github.com/user-attachments/assets/3e5d859a-4f3f-445d-9d90-5b77f27fe3f4" />
+
+
+## BFS / DFS
+
+在無向的前提下:
+  - BFS需要用一個visited array儲存，因為level order可能會重疊，用queue來儲存(FIFO)。
+  - DFS用Stack來儲存 (stack是存visited，且需要搜尋最長路徑，會把短路徑放到最後才pop)。
+
+若有向: 
+  - 需要討論方向性和weight。
+
+
+## graph / tree
+|                        | tree             | graph          |
+|------------------------|-----------------|-----------------|
+| 連通                    |  一定          | 不一定           |
+| cycle                   |  無            | 有             |
+| degree                 |  有             | 無             |
+| Traversal              |  無visited      | 有visited       |
+
 
 ## Best / Worst Case
 
