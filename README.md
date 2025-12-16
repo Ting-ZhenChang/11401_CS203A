@@ -91,8 +91,8 @@
           - 彈性高
           - 使用時機: 很多值，資料都有變動的可能性
 
-      - linked list 和 array sorting 的比較
-        - 為什麼要做sorting? 因為binary search時，找特定的值很方便，time complexity會減少
+## linked list 和 array sorting 的比較
+  為何要做sorting? search時，找特定的值很方便，time complexity會減少
           - 一般常見sort: Bubble、selection、merge、guiclc、bucket、insertion
           - sort 以記憶體分類為: internal sort、external sort
           - 類似概念: binary search tree、Hash open address
