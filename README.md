@@ -92,10 +92,10 @@
           - 使用時機: 很多值，資料都有變動的可能性
 
 ## linked list 和 array sorting 的比較
-  為何要做sorting? search時，找特定的值很方便，time complexity會減少
-          - 一般常見sort: Bubble、selection、merge、guiclc、bucket、insertion
-          - sort 以記憶體分類為: internal sort、external sort
-          - 類似概念: binary search tree、Hash open address
+  - 為何要做sorting? search時，找特定的值很方便，time complexity會減少
+  - 一般常見sort: Bubble、selection、merge、guiclc、bucket、insertion
+  - sort 以記憶體分類為: internal sort、external sort
+  - 類似概念: binary search tree、Hash open address
 
 | 結構        | 搜尋型態            | 時間複雜度 | sorting 優勢                                      | sorting 劣勢                                | 情境                                         | 空間利用率                                                   | performance                                |
 |-------------|---------------------|------------|---------------------------------------------------|---------------------------------------------|----------------------------------------------|--------------------------------------------------------------|--------------------------------------------|
