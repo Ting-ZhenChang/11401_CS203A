@@ -97,10 +97,10 @@
           - sort 以記憶體分類為: internal sort、external sort
           - 類似概念: binary search tree、Hash open address
 
-|    結構             |          搜尋型態         |  時間複雜度    |  sorting 優勢  |  sorting 劣勢  | 情境 |
-|----|----|----|----|----|----|  
-|  linked  list      |     sequential search     |  o(n)         |       在已知位置下insert、delete快，o(1)      |         link traversal issue                                                        |    insert、delete快，頻繁更新資料的情境    |
-|  array             |     random Access         |  o(1)         |       有random access(隨機存取)特性，每個元素都可以用o(1)時間存取      |         在排序過的陣列中insert需要右移、delete需要左移，這些動態調整，時間複雜度為o(n)    |    查找固定位置資料，但不適合頻繁更新資料的情境  |
+| 結構        | 搜尋型態            | 時間複雜度 | sorting 優勢                                      | sorting 劣勢                                | 情境                                         | 空間利用率                                                   | performance                                |
+|-------------|---------------------|------------|---------------------------------------------------|---------------------------------------------|----------------------------------------------|--------------------------------------------------------------|--------------------------------------------|
+| linked list | sequential search   | O(n)       | 在已知位置下 insert、delete 快，O(1)              | link traversal issue                         | insert、delete 快，適合頻繁更新資料的情境    | 比較有效，需存資料時再 create 空間，runtime 時才決定          | performance 較差，需要在 memory 間跳來跳去 |
+| array       | random access       | O(1)       | 有 random access 特性，每個元素都可 O(1) 時間存取 | 在排序陣列中 insert 需右移、delete 需左移，時間複雜度 O(n) | 查找固定位置資料，但不適合頻繁更新資料的情境 | 較無效，必須先宣告預期空間                                   | 連續 memory，performance 較好              |
       
       
   -  Unsorted array v.s sorted array
@@ -113,6 +113,9 @@
           - binary search
           - 因為sorted過，會較快速
            - o(logn)
+
+  - 問題: 在實務中，因為Linked List雖然節點插入刪除方便，但在需要頻繁存取特定位置的排序演算法中並不理想;選擇 Array 版本的 Selection Sort 通常更有效率（隨機存取 O(1)）
+    
 - 9/30
   - linked list V.S array
     - 特性
@@ -136,14 +139,7 @@
 |  insert at end               |            o(1)          |  o(n)/o(1)                     |
 |  delete                      |            o(n)          |  o(n)/o(1)                     |
      
-   - space
-      - Linked list在空間利用上比較有效，需存資料的時候再create空間，在runtime時才決定
-      -  Array必須先宣告預期空間，在random access較有效率
-    -  performance
-      - array 因為是連續memory，performance比較好
-      - linked list performance較差，需要在memory間跳來跳去
-    - 問題
-      - 在實務中，因為Linked List雖然節點插入刪除方便，但在需要頻繁存取特定位置的排序演算法中並不理想;選擇 Array 版本的 Selection Sort 通常更有效率（隨機存取 O(1)）
+
 
 - 10/7
   - linked list 型態
