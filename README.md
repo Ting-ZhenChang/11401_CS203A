@@ -42,16 +42,20 @@
 - 9/23
   - Array 
     - Array是連續記憶體空間(contiguous memory locations)，time complexity: o(1)
+   
+       ```text
+       - size of array分為: 靜態和動態
 
-    - size of array分為: 靜態和動態
-      - 靜態: 在編譯時陣列大小就決定了，是不能被改變的，存取快速但彈性差
-      - 動態: size會在runtime時跟系統要一個空間，使用malloc、realloc時，須注意需要自己管理記憶體，最後必須free掉，否則造成效率低或記憶體外洩
+      靜態: 在編譯時陣列大小就決定了，是不能被改變的，存取快速但彈性差
+      動態
+        └── malloc / realloc 可能失敗在 C 裡，malloc 或 realloc 失敗時會回傳 NULL。你的程式沒有檢查回傳值，若失敗直接使用會 segmentation fault
+          └── %p表示print pointer， 需搭配void*，\n表換行
+            └── malloc / realloc 可能失敗在 C 裡，malloc 或 realloc 失敗時會回傳 NULL。你的程式沒有檢查回傳值，若失敗直接使用會 segmentation fault
+                └── stack: 是一個指標指向heap記憶體，不能隨便擴充且會保留原值
+                   └── heap: 用malloc/new要來的動態記憶體，可用free釋放。一般都會在heap區塊後擴充，但如果heap不夠，系統會在heap找一塊更大的空間，把舊資料copy上去，並釋放舊的空間
+       - : size會在runtime時跟系統要一個空間，使用malloc、realloc時，須注意需要自己管理記憶體，最後必須free掉，否則造成效率低或記憶體外洩
 
-    - Dynamic Array需要知道:
-      - malloc / realloc 可能失敗在 C 裡，malloc 或 realloc 失敗時會回傳 NULL。你的程式沒有檢查回傳值，若失敗直接使用會 segmentation fault
-      - %p表示print pointer， 需搭配void*，\n表換行
-      - stack: 是一個指標指向heap記憶體，不能隨便擴充且會保留原值
-      - heap: 用malloc/new要來的動態記憶體，可用free釋放。一般都會在heap區塊後擴充，但如果heap不夠，系統會在heap找一塊更大的空間，把舊資料copy上去，並釋放舊的空間
+       ```
 
     - STL(標準模板庫) v.s ADT(抽象資料層面)
       - ATD主要是在理論層面，但不管如何實作。舉例:
@@ -87,18 +91,19 @@
           - 彈性高
           - 使用時機: 很多值，資料都有變動的可能性
 
-      - 為甚麼要sorting? 二分法時，找特定的值很方便，time complexity會減少
-        - 一般常見sort: Bubble、selection、merge、guiclc、bucket、insertion
-        - sort 以記憶體分類為:
-          - internal sort、external sort
+      - linked list 和 array sorting 的比較
+        - 為什麼要做sorting? 因為binary search時，找特定的值很方便，time complexity會減少
+          - 一般常見sort: Bubble、selection、merge、guiclc、bucket、insertion
+          - sort 以記憶體分類為: internal sort、external sort
+          - 類似概念: binary search tree、Hash open address
 
-      - Static Array優缺點、使用時機和time complexity
-        - pros: 有random access(隨機存取)特性，每個元素都可以用o(1)時間存取 
-        - cros: 在排序過的陣列中insert需要右移、delete需要左移，這些動態調整，時間複雜度為o(n)
-        - 其中insert需要注意空間，delete需要做last()
-        - 什麼時候適合用Static Array? 查找固定位置資料，但不適合頻繁更新資料的情境(這點跟linked list相反，存取慢但insert、delete快)
-
-      -  Unsorted array v.s sorted array
+|    結構             |          搜尋型態         |  時間複雜度    |  sorting 優勢  |  sorting 劣勢  | 情境 |
+|----|----|----|----|----|----|  
+|  linked  list      |     sequential search     |  o(n)         |       在已知位置下insert、delete快，o(1)      |         link traversal issue                                                        |    insert、delete快，頻繁更新資料的情境    |
+|  array             |     random Access         |  o(1)         |       有random access(隨機存取)特性，每個元素都可以用o(1)時間存取      |         在排序過的陣列中insert需要右移、delete需要左移，這些動態調整，時間複雜度為o(n)    |    查找固定位置資料，但不適合頻繁更新資料的情境  |
+      
+      
+  -  Unsorted array v.s sorted array
         - Unsorted array
           - 全找完才會決定是否存在
           - linear search
@@ -829,7 +834,7 @@ DFS-Visit(u)
 - 可使用 Array 儲存
 
 **實際應用**
-- Heap（Max Heap / Min Heap）
+- Heap（Max Heap / Min Heap），滿足Complete Binary Tree用Leaf Nodeinsert、delete的特性
 - Priority Queue
 - Heap Sort
 - 排程系統（CPU scheduling）
