@@ -315,6 +315,19 @@ Other Trees / Heaps
 - tree可採用linked list、括號法、left child-sibling方式轉成B.T
 - tree的問題: 因為有太多null，太浪費space，故用B.T才能使浪費率降到(k-1)/k最小，省space
 
+## Tree轉成Bianry Tree: Left-Child Right-Sibling Representation
+(1)先定義節點結構：
+
+<img width="532" height="114" alt="image" src="https://github.com/user-attachments/assets/23e149b6-ed03-45dc-806a-17c523d401ec" />
+
+(2)依上述圖做轉化表示為：
+
+<img width="525" height="335" alt="image" src="https://github.com/user-attachments/assets/193af5bb-657c-4ad2-b3f6-c1c0c3aec50c" />
+
+(3)將兄弟點(同Level點)的分支線向右轉(順時針)轉45度
+
+<img width="527" height="390" alt="image" src="https://github.com/user-attachments/assets/191b1e37-891b-42ef-9313-0dc5fca5341a" />
+
 
 ## binary tree(order tree)
 
@@ -532,9 +545,162 @@ int Eval(Node *T)
     | 63    | 6      |
     | 64–126 | NULL  |  
     | 127    | 7     |
- 
 
-## B.S.T、AVL Tree、Heap time complexity 
+## Delete（刪除）節點規則
+- 情況 1：Leaf Node（無 child）: 直接刪除
+- 情況 2：只有一個 child: 用 child 取代該節點
+- 情況 3：有兩個 child
+  
+  兩種常見做法（擇一）：
+    - 用 左子樹的最大值 取代
+    - 用 右子樹的最小值 取代
+
+
+BST 範例一
+
+         60
+         /  \
+       50    70
+      /  \     \
+    40   55     80
+      \          \
+      48         100
+
+❌ 不是 BST
+原因：48 < 50，卻出現在 50 的 右子樹
+
+BST 範例二（Insertion）
+
+插入順序: 26, 5, 77, 8, 19, 31, 17, 45
+
+        26
+       /  \
+      5    77
+       \
+        8
+         \
+         19
+        /  \
+      17   31
+              \
+               45
+
+## Traversal 與 BST 特性
+- BST 的 Inorder Traversal 會得到「排序後結果」
+
+Inorder：A B C D F K L P
+Postorder： A B F K P L D
+
+因此，由中序+後序得到:
+  
+        D
+       / \
+      B   L
+     / \   \
+    A   C   P
+           /
+          K
+         /
+        F
+        
+所以，Preorder結果: D B A C L K F P
+
+- B.S.T 演算法
+```text
+bool search(Node *T, int x)
+{
+    if (T == NULL) return false;
+    else
+    {
+        if (T->data == x) return true;
+        else if (x < T->data) return search(T->Lchild, x);
+        else return search(T->Rchild, x);
+    }
+}
+```
+
+## BST 操作與時間複雜度
+| Operation | 說明                         | Best Case | Worst Case |
+|-----------|------------------------------|-----------|------------|
+| Insert    | 依 BST 規則由 root 往下插入 | O(log n)  | O(n)       |
+| Delete    | 依節點子樹情況刪除           | O(log n)  | O(n)       |
+| Search    | 由 root 開始比較搜尋         | O(log n)  | O(n)       |
+
+⚠️ Worst case 通常發生在 BST 退化成鏈狀（像 Linked List） 時。
+
+
+## Heap（Max-Heap & Min-Heap）
+  
+基本定義
+- Heap 是一種 Complete Binary Tree（完全二元樹）
+- 常用 Array 儲存:
+  - 節省空間
+  - 方便存取父子節點
+
+Array Index 關係（0-based）:
+- Parent(i) = (i - 1) / 2
+- Left Child(i) = 2i + 1
+- Right Child(i) = 2i + 2
+
+heap性質需要注意:
+- Heap 一定是 Complete Binary Tree，但 不一定是 BST
+- 常使用 tmp 變數進行交換（swap）
+- Heap 僅保證 父子關係大小，不保證左右子樹排序
+  
+
+  Max-Heap 性質:
+  - 每個節點的值 大於等於其子節點
+  - Root 為最大值
+  - 插入元素後需執行 Bubble Up（向上調整）
+
+  Max-Heap 範例:
+
+           60
+          /    \
+         5      40
+        / \    /
+      30  20  10
+
+      - 滿足 Complete Binary Tree
+      - 父節點 ≥ 子節點
+
+
+  Min-Heap 性質:
+  - 每個節點的值 小於等於其子節點
+  - Root 為最小值
+  - 插入元素後需執行 Bubble Up（向上調整）
+
+  非合法 Min-Heap範例（不完整）:
+   
+            2
+          /   \
+         5     8
+        / \     \
+       9  12    30
+     
+       - 不符合 Complete Binary Tree（右子樹有節點，但左子樹未填滿）
+       - 因此 不能稱為 Heap
+
+## 建堆（Build Heap）方式比較
+
+| 方法              | 說明                         | 時間複雜度   | 備註               |
+|-------------------|------------------------------|--------------|--------------------|
+| Repeated Insert   | 逐一 insert + bubble up      | O(n log n)   | 直觀但較慢         |
+| Bottom-up Heapify | 從最後一個非葉節點往下調整   | O(n)         | 最常用、最有效率   |
+
+
+## Heap 操作時間複雜度比較表
+
+| 操作         | Max-Heap     | Min-Heap     |
+|--------------|--------------|--------------|
+| Insert       | O(log n)     | O(log n)     |
+| Delete Root  | O(log n)     | O(log n)     |
+| Get Root     | O(1)         | O(1)         |
+| Build Heap   | O(n)         | O(n)         |
+
+
+
+## 整理: B.S.T、AVL Tree、Heap time complexity 
 
 | Table Size (m)               |             beat case        |      worse case                |
 |------------------------------|------------------------------|--------------------------------|      
