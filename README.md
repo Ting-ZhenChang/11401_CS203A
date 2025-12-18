@@ -309,7 +309,7 @@ Other Trees / Heaps
 ├── Binomial Heap
 └── Fibonacci Heap
 ```
-## tree
+# tree
 
 Tree的定義:
 - tree 是一個非線性的data structure，有別於linked list，因為是hierarchical(有order)，所以沒有cycle
@@ -331,7 +331,7 @@ Tree的定義:
 <img width="527" height="390" alt="image" src="https://github.com/user-attachments/assets/191b1e37-891b-42ef-9313-0dc5fca5341a" />
 
 
-## binary tree(order tree)
+# binary tree(order tree)
 
                1
            /         \
@@ -499,7 +499,7 @@ int Eval(Node *T)
 ```
 
 
-## B.S.T
+# B.S.T
 
 特性: 
   - 若任意節點的左子樹不空，則左子樹上所有節點的值均小於它的根節點的值
@@ -631,7 +631,7 @@ bool search(Node *T, int x)
 ⚠️ Worst case 通常發生在 BST 退化成鏈狀（像 Linked List） 時。
 
 
-## Heap（Max-Heap & Min-Heap）
+# Heap（Max-Heap & Min-Heap）
   
 基本定義
 - Heap 是一種 Complete Binary Tree（完全二元樹）
