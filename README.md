@@ -310,10 +310,12 @@ Other Trees / Heaps
 └── Fibonacci Heap
 ```
 ## tree
-- Def:tree 是一個非線性的data structure，有別於linked list，因為是hierarchical(有order)，所以沒有cycle
-- <img width="1070" height="536" alt="image" src="https://github.com/user-attachments/assets/478c6645-36f7-4eff-ae1c-122f4d180978" />
+
+Tree的定義:
+- tree 是一個非線性的data structure，有別於linked list，因為是hierarchical(有order)，所以沒有cycle
 - tree可採用linked list、括號法、left child-sibling方式轉成B.T
 - tree的問題: 因為有太多null，太浪費space，故用B.T才能使浪費率降到(k-1)/k最小，省space
+<img width="1070" height="536" alt="image" src="https://github.com/user-attachments/assets/478c6645-36f7-4eff-ae1c-122f4d180978" />
 
 ## Tree轉成Bianry Tree: Left-Child Right-Sibling Representation
 (1)先定義節點結構：
@@ -681,7 +683,107 @@ heap性質需要注意:
        - 不符合 Complete Binary Tree（右子樹有節點，但左子樹未填滿）
        - 因此 不能稱為 Heap
 
-## 建堆（Build Heap）方式比較
+Max-Heap 插入與建堆
+
+範例一: 插入 13 到 Max-Heap
+
+         20
+        /  \
+      13   19
+     /  \   / \
+    7   3  5
+
+      - 插入 13：
+      
+           20
+          /  \
+        13   19
+       /  \   / \
+      7   3  5  13
+      
+    - 插入 10：
+    
+            20
+           /  \
+         13   19
+        /  \   / \
+       7   3  5  13
+      /
+    10
+- 插入時根據 Complete Binary Tree 的性質，新節點一定插在最底層最左邊的空位。
+
+ 範例二：插入 30 並進行 Heapify
+
+         20
+        /  \
+      15   13
+     /  \   / \
+    7   3  5  10
+
+    - 插入 30：
+ 
+            20
+           /  \
+         15   13
+        /  \   / \
+       7   3  5  10
+      /
+    30
+
+    - Heapify 後：
+
+            30
+           /  \
+         20   13
+        /  \   / \
+       15  3  5  10
+      /
+     7
+
+刪除Min-Heap & Max-Heap的root:
+- 刪除根節點（Root）
+- 將最後一個節點移到根的位置
+- 進行 Heapify（向下調整）以維持 Heap 性質
+
+
+Min-Heap刪除範例:
+
+          2
+         / \
+       5   4
+      / \   \
+    26 19  13
+    
+    - 刪除根節點 2 → 將 13 移到根 → Heapify 後：
+        
+          4
+         / \
+       5   13
+      / \
+    26 19
+
+Min-Heap刪除範例:
+
+          80
+         /  \
+       50    60
+      / \   / \
+     20 40 30 100
+     
+    - 刪除根節點 80 → 將 100 移到根 → Heapify 後：
+      
+          100
+         /   \
+       50     60
+      / \    /
+     20 40  30
+
+    - 刪除後的陣列表示：
+    [100, 50, 60, 20, 40, 30] 
+    原本的最大值 80 已移除，100 成為新根。
+
+
+## 建堆（Build Heap）時間複雜度比較
 
 | 方法              | 說明                         | 時間複雜度   | 備註               |
 |-------------------|------------------------------|--------------|--------------------|
