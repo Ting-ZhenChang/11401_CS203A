@@ -13,7 +13,7 @@
 ## 課程描述 
 - 本課程讓我們了解什麼是資料結構，它跟演算法之間的關係，以及會如何去影響到記憶體。課程內容包含linked lists, stacks, graphs, hashing, arrays等主題，理解和掌握資料結構的基本操作，學習到問題解決的能力，在每一章節都會加上Pseudocode，以便熟悉整個資料結構。
   
-## 課程筆記
+## 課程目的
 - 9/9
   - C 的資料結構 = 記憶體操作，資料結構主在於讓記憶體空間最小化。因為工程師需要自己負責記憶體配置和釋放，雖然效率高、可預測性強，但需要自行管理，若錯誤會造成記憶體洩漏或程式崩潰。
   - 程式的資料都必須存放在記憶體中才能被處理。記憶體包含:Variables、Data structures、Temporary buffers，資料越動態、越複雜 → 記憶體管理的重要性越高。
@@ -37,10 +37,22 @@
     
  
 
+## 課程大綱
+|  |
+| ------- |
+| [Array、linked list](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Array%E3%80%81linked%20list) |
+| [Stack、Queue](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Stack%E3%80%81Queue) |
+| [Tree](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Tree) |
+| [Binary Tree](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Binary%20Tree) |
+| [Binary Search Tree](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Binary%20Search%20Tree) |
+| [AVL Tree](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/AVL%20Tree) |
+| [Rad Black Tree](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Rad%20Black%20Tree) |
+| [Heap](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Heap) |
+| [Graph](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Graph) |
+| [BFS、DFS](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/BFS%E3%80%81DFS) |
+| 作業心得與整理: [Assignment V Reflection](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Assignment%20V%20Reflection) |
 
-- 12/1
 # Tree Structures Overview
-
 
  ```text
   Tree
