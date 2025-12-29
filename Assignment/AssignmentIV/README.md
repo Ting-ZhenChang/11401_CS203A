@@ -56,17 +56,17 @@ Email: Sofe231436935@gmail.com
 ## Compilation, Build, Execution, and Output
 
 ### Compilation
-- 本專案在 Windows 環境下使用 makefile.bat 進行編譯
- 
+- The project uses a comprehensive Makefile that builds both C and C++ versions with proper flags:
+
   ```bash
   # Build both C and C++ versions
-  makefile.bat all 
-  
+  make all
+
   # Build only C version
-  makefile.bat c 
-  
+  make c
+
   # Build only C++ version
-  makefile.bat cxx
+  make cxx
   ```
 
 ### Manual Compilation (if needed)
@@ -98,12 +98,23 @@ Email: Sofe231436935@gmail.com
 
 ### Result Snapshot
 - Example output for integers:
+- c版本
 <img width="848" height="896" alt="image" src="https://github.com/user-attachments/assets/bc2946a7-5554-4604-bcb2-2ae9a3e93415" />
 <img width="746" height="812" alt="image" src="https://github.com/user-attachments/assets/ee03cef6-82f9-4d36-b321-45da4ac6a23c" />
 <img width="684" height="822" alt="image" src="https://github.com/user-attachments/assets/7e52106c-619f-4f70-93c2-9a35e9c8c838" />
 
+- c++版本
+<img width="1494" height="882" alt="image" src="https://github.com/user-attachments/assets/9654383a-9c4d-4502-8270-435f1b37c418" />
+<img width="1366" height="816" alt="image" src="https://github.com/user-attachments/assets/091deca1-f6f8-4df3-839c-40b9bf9eafb0" />
+<img width="1728" height="828" alt="image" src="https://github.com/user-attachments/assets/fadbd912-9f16-4587-a682-e549e32f24a7" />
+
 - Example output for strings:
-<img width="796" height="1456" alt="image" src="https://github.com/user-attachments/assets/a347325e-f762-495b-b620-115b8593cc71" />
+- c版本
+- <img width="796" height="1456" alt="image" src="https://github.com/user-attachments/assets/a347325e-f762-495b-b620-115b8593cc71" />
+
+- c++版本
+- <img width="2154" height="1422" alt="image" src="https://github.com/user-attachments/assets/037ae277-4eb3-4967-81d0-eeced56bf9e6" />
+
 
 - Example output for integers:
   ```
