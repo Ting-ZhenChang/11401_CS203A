@@ -10,8 +10,10 @@
 - **上課時間:**
   - 禮拜一 9:10-10:00
   - 禮拜二 15:10~17:00
+
 ## 課程描述 
-- 本課程讓我們了解什麼是資料結構，它跟演算法之間的關係，以及會如何去影響到記憶體。課程內容包含linked lists, stacks, graphs, hashing, arrays等主題，理解和掌握資料結構的基本操作，學習到問題解決的能力，在每一章節都會加上Pseudocode，以便熟悉整個資料結構。
+- 本課程重點介紹資料結構的核心概念，說明資料結構與演算法之間的密切關係，以及它們如何影響記憶體的使用與管理。課程內容涵蓋 linked lists、stacks、graphs、hashing 與 arrays 等主題，透過這些資料結構的學習，幫助我們理解並掌握其基本操作與應用方式。
+此外，由於資料結構與演算法具有高度相關性，本課程強調在熟悉資料結構後，立即搭配演算法練習，以提升問題分析與解決的能力。我認為這是一種相當高效的學習方式，因此在每一個章節中皆會搭配 Pseudocode，協助理解演算法流程與邏輯。
   
 ## 課程目的
 - 9/9
@@ -51,6 +53,7 @@
 | [Graph](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Graph) |
 | [BFS、DFS](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/BFS%E3%80%81DFS) |
 | 作業心得與整理: [Assignment V Reflection](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Assignment%20V%20Reflection) |
+| 期末考重點整理: []() |
 
 # Tree Structures Overview
 
