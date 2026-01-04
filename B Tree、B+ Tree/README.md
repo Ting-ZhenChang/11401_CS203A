@@ -73,7 +73,7 @@ True。
 
 ```
 
-## B Tree的insert、delete 
+## B Tree 的insert、delete 
 
 ```text
 
@@ -155,6 +155,8 @@ Step 3：Internal Node Split
 
 ```
 詳細版流程圖:
+
+
 ![83560](https://github.com/user-attachments/assets/4203b9e7-83cc-443b-838d-c5e01d7c9d6b)
 
 ```text
@@ -226,5 +228,29 @@ B-Tree key 數量範圍：(child−1) = 1∼2
 
 ```
 詳細版流程圖:
+
+
 ![53031](https://github.com/user-attachments/assets/0edcf0ab-ca59-4fa3-9801-cfafcf52d3e2)
+
+# B+ Tree
+- 分成索引層和資料層
+  - 索引層: index B-Tree
+  - 資料層: data block 用 linked list
+- 所有data都在leaf
+- insert、delete 容易，需要index
+- 支援ISAM
+  
+## B+ Tree的insert、delete 
+
+範例一: B+ Tree of order 3，insert 8 ?
+
+
+![45035](https://github.com/user-attachments/assets/32c420da-f450-43f4-b4b3-fca624c954c9)
+
+
+範例二:  B+ Tree of order 3，依序刪除以下key: 8、100、10、5 ?
+
+
+![7476](https://github.com/user-attachments/assets/652d7e4e-5fd8-4261-98b4-24c398e60947)
+
 
