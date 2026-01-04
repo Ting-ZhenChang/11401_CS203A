@@ -14,11 +14,10 @@
     - Color Change（重新著色, C.C.）
     - Rotation（旋轉）：LL / RR / LR / RL
 
+```text
 
 範例一:
 插入順序: 4, 7, 12, 15, 3, 5, 14, 18
-```text
-
 (1) 插入 4
    樹為空 → 4 成為 root
    Root 必須是黑色
