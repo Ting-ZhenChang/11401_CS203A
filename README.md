@@ -53,7 +53,7 @@
 | [Graph](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Graph) |
 | [BFS、DFS](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/BFS%E3%80%81DFS) |
 | 作業心得與整理: [Assignment V Reflection](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Assignment%20V%20Reflection) |
-| 自主學習: [森林化為二元樹之方法](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/%E6%A3%AE%E6%9E%97%E8%BD%89%E6%88%90%E4%BA%8C%E5%85%83%E6%A8%B9%E4%B9%8B%E6%96%B9%E6%B3%95) 、 [B Tree、B+ Tree](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/B%20Tree%E3%80%81B%2B%20Tree) |
+| 自主學習: [森林化為二元樹之方法](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/%E6%A3%AE%E6%9E%97%E8%BD%89%E6%88%90%E4%BA%8C%E5%85%83%E6%A8%B9%E4%B9%8B%E6%96%B9%E6%B3%95) 、 [B Tree、B+ Tree](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/B%20Tree%E3%80%81B%2B%20Tree)、[Extended Binary Tree](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Extended%20Binary%20Tree) |
 
 # Tree Structures Overview
 
