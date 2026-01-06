@@ -312,3 +312,13 @@ bool del(int &item) {
 
 ## 為甚麼liner array 不適合用 Queue ? 
 因為當rear == n 時不見得空間滿了，可能front > 0，所以需要將元素左移，但會用到迴圈時間複雜度會從o(1)到o(n)，故還是用circular array較佳。
+
+
+# 補充: Stack 與 Queue 的互相模擬
+## 用 stack 做成 Queue
+
+<img width="594" height="1002" alt="image" src="https://github.com/user-attachments/assets/fc4264f8-35dd-49ff-9dd8-0411ce4d56bf" />
+
+## 用 Queue 做成 Stack 
+
+<img width="822" height="888" alt="image" src="https://github.com/user-attachments/assets/021060eb-c986-4ed0-a1d2-c67b0ffd95ce" />
