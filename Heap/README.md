@@ -11,17 +11,17 @@ Array Index 關係（0-based）:
 - Left Child(i) = 2i + 1
 - Right Child(i) = 2i + 2
 
-heap性質需要注意:
+heap性質:
 - Heap 一定是 Complete Binary Tree，但 不一定是 BST
 - 常使用 tmp 變數進行交換（swap）
 - Heap 僅保證 父子關係大小，不保證左右子樹排序
   
-
-  Max-Heap 性質:
+Max-Heap 性質:
   - 每個節點的值 大於等於其子節點
   - Root 為最大值
   - 插入元素後需執行 Bubble Up（向上調整）
 
+```text
   Max-Heap 範例:
 
            60
@@ -32,12 +32,14 @@ heap性質需要注意:
 
       - 滿足 Complete Binary Tree
       - 父節點 ≥ 子節點
+```
 
-
-  Min-Heap 性質:
+Min-Heap 性質:
   - 每個節點的值 小於等於其子節點
   - Root 為最小值
   - 插入元素後需執行 Bubble Up（向上調整）
+
+```text
 
   非合法 Min-Heap範例（不完整）:
    
@@ -49,10 +51,15 @@ heap性質需要注意:
      
        - 不符合 Complete Binary Tree（右子樹有節點，但左子樹未填滿）
        - 因此 不能稱為 Heap
+```
 
-Max-Heap 插入與建堆
+ ## Max-Heap 插入與建堆
+
+```text
 
 範例一: 插入 13 到 Max-Heap
+
+原始題目:
 
          20
         /  \
@@ -60,7 +67,7 @@ Max-Heap 插入與建堆
      /  \   / \
     7   3  5
 
-      - 插入 13：
+插入 13：
       
            20
           /  \
@@ -68,7 +75,7 @@ Max-Heap 插入與建堆
        /  \   / \
       7   3  5  13
       
-    - 插入 10：
+插入 10：
     
             20
            /  \
@@ -77,9 +84,15 @@ Max-Heap 插入與建堆
        7   3  5  13
       /
     10
-- 插入時根據 Complete Binary Tree 的性質，新節點一定插在最底層最左邊的空位。
 
- 範例二：插入 30 並進行 Heapify
+插入時根據 Complete Binary Tree 的性質，新節點一定插在最底層最左邊的空位。
+
+```
+
+
+```text
+
+範例二：插入 30 並進行 Heapify
 
          20
         /  \
@@ -87,7 +100,7 @@ Max-Heap 插入與建堆
      /  \   / \
     7   3  5  10
 
-    - 插入 30：
+插入 30：
  
             20
            /  \
@@ -97,7 +110,7 @@ Max-Heap 插入與建堆
       /
     30
 
-    - Heapify 後：
+Heapify 後：
 
             30
            /  \
@@ -112,42 +125,102 @@ Max-Heap 插入與建堆
 - 將最後一個節點移到根的位置
 - 進行 Heapify（向下調整）以維持 Heap 性質
 
+```
+
+流程圖:
+
+![65876](https://github.com/user-attachments/assets/79d40aee-6fdd-4b7b-96eb-f2472f76e019)
+
+## Heap Delete（Min-Heap & Max-Heap）
+
+```text
 
 Min-Heap刪除範例:
 
-          2
-         / \
-       5   4
-      / \   \
-    26 19  13
-    
-    - 刪除根節點 2 → 將 13 移到根 → Heapify 後：
-        
-          4
-         / \
-       5   13
-      / \
-    26 19
 
-Min-Heap刪除範例:
+原始Min-Heap:
+
+        2
+      /   \
+     5     4
+    / \   /
+  26 19 13  7   ← 最後一個節點
+
+Step 1️: 刪 root，用最後節點補上
+
+        7
+      /   \
+     5     4
+    / \
+  26 19 13
+
+Step 2️: 向下調整（和較小的 child 換）
+
+比較 7 與 5, 4 → 換 4
+繼續向下直到符合 Min-Heap
+
+        2
+      /   \
+     5     4
+    / \   /
+  26 19 13
+
+Min-Heap Delete 結果:
+
+        2
+      /   \
+     5     4
+    / \
+  26 19 13
+
+
+
+```
+
+```text
+
+Max-Heap刪除範例:
+
+原始Max-Heap:
+
+          100
+        /     \
+      80       60
+     /  \     /  \
+   50   40   30  20   ← 最後一個節點
+
+Step 1️: 刪 root，用最後節點補上
+
+          20
+        /     \
+      80       60
+     /  \     /
+   50   40   30
+
+Step 2️: 向下調整（和較大的 child 換）
+
+20 vs 80, 60 → 換 80
+20 vs 50, 40 → 換 50
 
           80
-         /  \
-       50    60
-      / \   / \
-     20 40 30 100
-     
-    - 刪除根節點 80 → 將 100 移到根 → Heapify 後：
-      
-          100
-         /   \
-       50     60
-      / \    /
-     20 40  30
+        /     \
+      50       60
+     /  \     /
+   20   40   30
 
-    - 刪除後的陣列表示：
-    [100, 50, 60, 20, 40, 30] 
-    原本的最大值 80 已移除，100 成為新根。
+Max-Heap Delete 結果:
+
+          80
+        /     \
+      50       60
+     /  \     /
+   20   40   30
+
+```
+流程圖:
+
+![91068](https://github.com/user-attachments/assets/dc1061f9-7c12-4940-b07f-181b3f3c647b)
+
 
 
 ## 建堆（Build Heap）時間複雜度比較
