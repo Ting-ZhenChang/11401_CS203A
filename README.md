@@ -11,11 +11,12 @@
   - 禮拜一 9:10-10:00
   - 禮拜二 15:10~17:00
 
-## 課程描述 
-- 本課程重點介紹資料結構的核心概念，說明資料結構與演算法之間的密切關係，以及它們如何影響記憶體的使用與管理。課程內容涵蓋 linked lists、stacks、graphs、hashing 與 arrays 等主題，透過這些資料結構的學習，幫助我們理解並掌握其基本操作與應用方式。
-此外，由於資料結構與演算法具有高度相關性，本課程強調在熟悉資料結構後，立即搭配演算法練習，以提升問題分析與解決的能力。我認為這是一種相當高效的學習方式，因此在每一個章節中皆會搭配 Pseudocode，協助理解演算法流程與邏輯。
-  
 ## 課程目的
+- 本課程重點介紹資料結構的核心概念，說明資料結構與演算法之間的密切關係，以及它們如何影響記憶體的使用與管理。課程內容涵蓋 linked lists、stacks、graphs、hashing 與 arrays 等主題，透過這些資料結構的學習，幫助我們理解並掌握其基本操作與應用方式。
+- 深入理解各種搜尋與排序的演算法和時間複雜度。此筆記強調在熟悉資料結構後，立即搭配演算法練習，因此在每一個章節中皆會搭配 Pseudocode，以提升問題分析與解決的能力，我認為此方法是一種相當高效的學習方式。
+- 參考資料: Fundamentals of Data Structures in C by Ellis Horowitz, Sartaj Sahni, Susan Anderson-Freed
+
+## 課程描述
 - 9/9
   - C 的資料結構 = 記憶體操作，資料結構主在於讓記憶體空間最小化。因為工程師需要自己負責記憶體配置和釋放，雖然效率高、可預測性強，但需要自行管理，若錯誤會造成記憶體洩漏或程式崩潰。
   - 程式的資料都必須存放在記憶體中才能被處理。記憶體包含:Variables、Data structures、Temporary buffers，資料越動態、越複雜 → 記憶體管理的重要性越高。
@@ -37,9 +38,8 @@
       - 學會挑選合適的資料結構和演算法，在多人使用下，用好的演算法來加速運算和管理。查詢、insert、delete、update都有不同資料結構
   - Jave為了解決machine code問題(不相容)，會用bytecode經過vm，再轉成Machine code
     
- 
-
 ## 課程大綱
+
 |  |
 | ------- |
 | [Array、linked list](https://github.com/Ting-ZhenChang/11401_CS203A/tree/main/Array%E3%80%81linked%20list) |
@@ -58,6 +58,7 @@
 # Tree Structures Overview
 
  ```text
+
   Tree
 └── B.T (Binary Tree)
     ├── 搜尋用途 → B.S.T (Binary Search Tree)
@@ -85,6 +86,7 @@ Other Trees / Heaps
 ├── Leftist Heap
 ├── Binomial Heap
 └── Fibonacci Heap
+
 ```
 
 
