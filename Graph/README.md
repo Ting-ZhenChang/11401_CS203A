@@ -80,6 +80,8 @@ Adjacency Matrix:
 
 <img width="2048" height="1152" alt="image" src="https://github.com/user-attachments/assets/3e5d859a-4f3f-445d-9d90-5b77f27fe3f4" />
 
+Reference: https://www.slideshare.net/slideshow/sparse-graph-and-dense-graph-algorithm-use-for-it-and-advantages-and-their-disadvantages/269708779
+
 ```text
 *Note:
 
