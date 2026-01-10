@@ -12,7 +12,9 @@
 - 每個節點的平衡因子必須在 [-1, 0, 1] 範圍內。
 - 若高度為 h 的 AVL Tree，其最多節點數為：F_{h+2}-1 （F 為 Fibonacci 數列）
 
+
 ```text
+
 AVL Tree 結構:
 
            D
@@ -90,6 +92,7 @@ AVL Tree 建構範例：
 
 ```
 詳細版流程圖:
+
 ![8775](https://github.com/user-attachments/assets/eefd1875-2b81-48e5-828e-e0aacf119c12)
 
 
