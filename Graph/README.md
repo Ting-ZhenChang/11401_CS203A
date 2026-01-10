@@ -1,40 +1,32 @@
 # GRAPH
 - 由vertex + edge 形成
+- Graph 相關專有名詞:
+
+![87781](https://github.com/user-attachments/assets/49f2108f-2eb4-48d3-b99b-a77f9d50b047)
 
 ## Adjacency List
 
-特性: 有 n 個頂點，有 n 條 linked list
-
-無向圖:
+- 特性: 有 n 個頂點，有 n 條 linked list
+- 無向圖:
 
 <img width="876" height="558" alt="image" src="https://github.com/user-attachments/assets/8e3e280d-6e66-43a4-a627-0fbc47c64c01" />
 
 Adjacency List:
 
-1 → 2 → Null
+![29257](https://github.com/user-attachments/assets/2145dd69-95c3-40d1-a7cb-8dd7d21d9961)
 
-2 → 1 → 3 → 4 → Null
 
-3 → 2 → 4 → Null
-
-4 → 2 → 3 → Null
-
-有向圖:
+- 有向圖:
 
 <img width="614" height="624" alt="image" src="https://github.com/user-attachments/assets/52808b66-4226-44ba-a3dc-b424cc6e9836" />
 
 Adjacency List:
 
-1 → 3 → Null
-
-2 → 1 → 3 → Null
-
-3 → Null
-
+![97119](https://github.com/user-attachments/assets/957a309f-8ef7-4c50-b6da-425f023c3a79)
 
 ## Adjacency Matrix
 
-無向圖:
+- 無向圖:
 
 <img width="876" height="558" alt="image" src="https://github.com/user-attachments/assets/8e3e280d-6e66-43a4-a627-0fbc47c64c01" />
 
@@ -47,7 +39,7 @@ Adjacency Matrix:
 | 3 | 0 | 1 | 0 | 1 |
 | 4 | 0 | 1 | 1 | 0 |
 
-有向圖:
+- 有向圖:
 
 <img width="614" height="624" alt="image" src="https://github.com/user-attachments/assets/52808b66-4226-44ba-a3dc-b424cc6e9836" />
 
@@ -58,8 +50,6 @@ Adjacency Matrix:
 | 1 | 0 | 1 | 0 |
 | 2 | 1 | 0 | 1 |
 | 3 | 0 | 0 | 0 |
-
-
 
 ## Adjacency Matrix 和 Adjacency List 的比較
 
