@@ -79,3 +79,8 @@
                       18(R)
 
 ```
+詳細版流程圖:
+
+![18073](https://github.com/user-attachments/assets/08af2aeb-7aa9-4402-a4b7-96b7c35cd4e7)
+
+
