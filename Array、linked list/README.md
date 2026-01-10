@@ -1,10 +1,11 @@
  - 尋找最佳路徑 eg: google map
     - vertex(node)、edge(link/line)
-      
-  - Array 
-    - Array是連續記憶體空間(contiguous memory locations)，time complexity: o(1)
+ 
+## Array 
+- Array是連續記憶體空間( contiguous memory locations )
+- time complexity: o(1)
    
-       ```text
+      ```text
        - size of array分為: 靜態和動態
 
       靜態: 在編譯時陣列大小就決定了，是不能被改變的，存取快速但彈性差
@@ -17,40 +18,41 @@
        size會在runtime時跟系統要一個空間，使用malloc、realloc時，須注意需要自己管理記憶體，最後必須free掉，否則造成效率低或記憶體外洩
 
        ```
+      
+## STL(標準模板庫) v.s ADT(抽象資料層面)
+- ATD主要是在理論層面，但不管如何實作。舉例:
+- Stack (堆疊)
+ - 操作：push(x)、pop()、top()、isEmpty()
+ - 規則：後進先出 (LIFO)
+ - 但用陣列還是鏈結串列去實作？ADT 不管。
+- Queue (佇列)
+ - 操作：enqueue(x)、dequeue()、front()、isEmpty()
+ - 規則：先進先出 (FIFO)
 
-    - STL(標準模板庫) v.s ADT(抽象資料層面)
-      - ATD主要是在理論層面，但不管如何實作。舉例:
-        - Stack (堆疊)
-          - 操作：push(x)、pop()、top()、isEmpty()
-          - 規則：後進先出 (LIFO)
-          - 但用陣列還是鏈結串列去實作？ADT 不管。
-        - Queue (佇列)
-          - 操作：enqueue(x)、dequeue()、front()、isEmpty()
-          - 規則：先進先出 (FIFO)
+- STL是用現成的程式庫，以使用者方便為主要目的，可直接編譯，屬於實作層面。舉例:
+ - vector → Dynamic Array (動態陣列)
+ - list → Linked List (鏈結串列)
+ - stack → Stack (堆疊，通常包裝 deque)
+ - queue → Queue (佇列，通常包裝 deque)
+ - priority_queue → Heap (優先佇列)
+ - set / map → 平衡二元搜尋樹 (紅黑樹)
+ - unordered_set / unordered_map → Hash Table
 
-      - STL是用現成的程式庫，以使用者方便為主要目的，可直接編譯，屬於實作層面。舉例:
-        - vector → Dynamic Array (動態陣列)
-        - list → Linked List (鏈結串列)
-        - stack → Stack (堆疊，通常包裝 deque)
-        - queue → Queue (佇列，通常包裝 deque)
-        - priority_queue → Heap (優先佇列)
-        - set / map → 平衡二元搜尋樹 (紅黑樹)
-        - unordered_set / unordered_map → Hash Table
-      - array v.s vecter
-        - array
-          - 大小在編譯時就固定
-          - 記憶體: stack
-          - performance: 快
-          - 記憶體容量: 小
-          - 彈性差
-          - 使用時機: 都是已知的值，適合少資料使用
-        - vector
-          - 在runtime才設定變數
-          - 記憶體: heap
-          - performance: slight overhead
-          - 記憶體容量: 需額外空間
-          - 彈性高
-          - 使用時機: 很多值，資料都有變動的可能性
+## array v.s vecter
+- array: 
+ - 大小在編譯時就固定
+ - 記憶體: stack
+ - performance: 快
+ - 記憶體容量: 小
+ - 彈性差
+ - 使用時機: 都是已知的值，適合少資料使用
+- vector:
+ - 在runtime才設定變數
+ - 記憶體: heap
+ - performance: slight overhead
+ - 記憶體容量: 需額外空間
+ - 彈性高
+ - 使用時機: 很多值，資料都有變動的可能性
 
 ## linked list 和 array sorting 的比較
   - 為何要做sorting? search時，找特定的值很方便，time complexity會減少
@@ -63,29 +65,28 @@
 | linked list | sequential search   | O(n)       | 在已知位置下 insert、delete 快，O(1)              | link traversal issue                         | insert、delete 快，適合頻繁更新資料的情境    | 比較有效，需存資料時再 create 空間，runtime 時才決定          | performance 較差，需要在 memory 間跳來跳去 |
 | array       | random access       | O(1)       | 有 random access 特性，每個元素都可 O(1) 時間存取 | 在排序陣列中 insert 需右移、delete 需左移，時間複雜度 O(n) | 查找固定位置資料，但不適合頻繁更新資料的情境 | 較無效，必須先宣告預期空間                                   | 連續 memory，performance 較好              |
       
-      
-  -  Unsorted array v.s sorted array
-        - Unsorted array
-          - 全找完才會決定是否存在
-          - linear search
-          - o(n)
-        - Sorted array
-          - 不用全找，一定在某個特別位置
-          - binary search
-          - 因為sorted過，會較快速
-           - o(logn)
-
-  - 問題: 在實務中，因為Linked List雖然節點插入刪除方便，但在需要頻繁存取特定位置的排序演算法中並不理想;選擇 Array 版本的 Selection Sort 通常更有效率（隨機存取 O(1)）
+## Unsorted array v.s sorted array
+- Unsorted array
+ - 全找完才會決定是否存在
+ - linear search
+ - o(n)
+- Sorted array
+ - 不用全找，一定在某個特別位置
+ - binary search
+ - 因為sorted過，會較快速
+ - o(logn)
+ - 
+- 問題: 在實務中，因為Linked List雖然節點插入刪除方便，但在需要頻繁存取特定位置的排序演算法中並不理想;選擇 Array 版本的 Selection Sort 通常更有效率（隨機存取 O(1)）
     
 - 9/30
-  - linked list V.S array
-    - 特性
-      - array一開始就宣告陣列大小，而linked list是不動到data本身，利用**pointer**把data的連結位置改變，且存取初始值時須從haed起
-    - 記憶體配置
-      - array記憶體是連續的，linked list資料越來越大時會逐漸不連續，且每個節點都是動態的
-    - 記憶體空間
-      - array 沒有額外overhead
-      - linked list 有額外overhead   
+## linked list v.s array
+- 特性:
+ - array一開始就宣告陣列大小，而linked list是不動到data本身，利用**pointer**把data的連結位置改變，且存取初始值時須從haed起
+- 記憶體配置:
+ - array記憶體是連續的，linked list資料越來越大時會逐漸不連續，且每個節點都是動態的
+- 記憶體空間:
+ - array 沒有額外overhead
+ - linked list 有額外overhead   
     
 ## array、linked time complexity   
 
@@ -103,6 +104,7 @@
 
 
 - 10/7
+## linked list
   - linked list 型態
     - singly(都指向下一個位置)、doubly、circular
     - 通常singly複雜度>doubly、circular
