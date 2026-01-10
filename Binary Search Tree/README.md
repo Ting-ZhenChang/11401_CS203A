@@ -5,7 +5,9 @@
   - 若任意節點的右子樹不空，則右子樹上所有節點的值均大於它的根節點的值
   - 任意節點的左、右子樹也分別為二元搜尋樹
 
-<img width="720" height="427" alt="image" src="https://github.com/user-attachments/assets/3cfdba6c-4410-4d01-8379-850156fe517c" />
+<img width="722" height="392" alt="image" src="https://github.com/user-attachments/assets/e5c78280-0488-48a9-b1df-babff432971c" />
+
+Reference: https://www.geeksforgeeks.org/dsa/what-is-binary-search-tree/
 
     worse case為skewed tree:
     
@@ -56,6 +58,7 @@
     - 用 左子樹的最大值 取代
     - 用 右子樹的最小值 取代
 
+```text
 
 BST 範例一
 
@@ -106,8 +109,11 @@ Postorder： A B F K P L D
         
 所以，Preorder結果: D B A C L K F P
 
-- B.S.T 演算法
+```
+## B.S.T 演算法
+
 ```text
+
 bool search(Node *T, int x)
 {
     if (T == NULL) return false;
@@ -118,6 +124,7 @@ bool search(Node *T, int x)
         else return search(T->Rchild, x);
     }
 }
+
 ```
 
 ## BST 操作與時間複雜度
@@ -127,4 +134,4 @@ bool search(Node *T, int x)
 | Delete    | 依節點子樹情況刪除           | O(log n)  | O(n)       |
 | Search    | 由 root 開始比較搜尋         | O(log n)  | O(n)       |
 
-⚠️ Worst case 通常發生在 BST 退化成鏈狀（像 Linked List） 時。
+⚠️ Worst case 通常發生在 BST 退化成鏈狀（像 Linked List) 時。
