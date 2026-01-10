@@ -18,7 +18,7 @@
 範例一:
 表達式：a + b * c - d / e
 
-則對應的 Binary Tree：
+則對應的 Expression Tree：
 
           -
          / \
@@ -38,7 +38,7 @@ Postorder：abc*+de/-
 範例二:
 表達式: (a + b) * c - d / (e * f) + g
 
-則對應的 Binary Tree：
+則對應的 Expression Tree：
 
           +
        /     \
@@ -50,8 +50,24 @@ Postorder：abc*+de/-
 / \         / \
 a  b       e  f
 
+範例三:
+表達式: ((A + (B * C)) - (D / E))
+
+則對應的 Expression Tree：
+
+      -
+    /   \
+   +     /
+  / \   / \
+ A   * D   E
+    / \
+   B   C
 
 ```
+詳細版流程圖( 範例三 ):
+
+![65065](https://github.com/user-attachments/assets/de59b399-34d3-4414-8928-c473a05fc707)
+
 
 ## Expression Tree 演算法
 
