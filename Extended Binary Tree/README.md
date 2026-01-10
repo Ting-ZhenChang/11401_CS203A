@@ -10,6 +10,8 @@
 ```text
 Notes: 有些版本定義不同，External Node 當作 leaf（葉節點），Internal Node 當作 non-leaf（非葉節點）
 ```
+![10923](https://github.com/user-attachments/assets/704d3595-7d3e-4430-b1ea-87d6ba0ea12b)
+
 
 ## 路徑長度 Path Length
 
@@ -21,4 +23,7 @@ Notes: 有些版本定義不同，External Node 當作 leaf（葉節點），Int
 
 -  E = I + 2N (其中 N 為 Internal Node 數量)
 -  E 和 I 成正比，若樹高越小，則 E 和 I 值越小，反之愈大
--  有一個Skewed Extended B.T，具有n個 internal nodes，求E值
+- 範例:
+
+![72607](https://github.com/user-attachments/assets/3c7e3d6b-bf53-4da5-a2f9-f2263157496b)
+
