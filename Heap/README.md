@@ -239,3 +239,33 @@ Max-Heap Delete 結果:
 | Delete Root  | O(log n)     | O(log n)     |
 | Get Root     | O(1)         | O(1)         |
 | Build Heap   | O(n)         | O(n)         |
+
+
+## Min-Max Heap( 最大最小堆積 )
+
+![78235](https://github.com/user-attachments/assets/6df56ff8-ed9b-47b9-801c-aa62b6d1e5fe)
+
+
+![3338](https://github.com/user-attachments/assets/ae0c113f-9146-4726-b5a0-f573e9fbf97c)
+
+
+## Deep ( Double ended Heep ) 雙堆積
+
+![25788](https://github.com/user-attachments/assets/198dd5a2-4d29-438e-8d98-ab5a87c29ae5)
+
+![89050](https://github.com/user-attachments/assets/d580b520-76b6-4937-986a-a9ee513cb66b)
+
+![56716](https://github.com/user-attachments/assets/99ccd02a-aa85-455c-aaab-cf8da63c747f)
+
+![49756](https://github.com/user-attachments/assets/206f26e8-27ae-4a59-9a1c-2d3a0c8d986e)
+
+## SMMH( Symmetric Min-Max Heap )
+
+![80548](https://github.com/user-attachments/assets/3a318243-1f49-47c9-a9b6-21568e50d9a5)
+
+![19658](https://github.com/user-attachments/assets/13e217b9-a2eb-45b3-9557-f11f9e60a310)
+
+![74835](https://github.com/user-attachments/assets/8890d018-7b0c-4090-a698-b8442a34618d)
+
+
+
